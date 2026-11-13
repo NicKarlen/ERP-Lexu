@@ -260,10 +260,10 @@
       "reporting_bi": "Prüfen – nicht belegt",
       "mobile_app": "Prüfen – nicht belegt",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – Lohn läuft über SuccessFactors Payroll; Zertifizierung auf der Swissdec-Liste prüfen",
+      "swissdec": "Teilweise (Lohn über SAP SuccessFactors Employee Central Payroll bzw. SAP HCM für S/4HANA, beide auf der Swissdec-Liste; Version dort nicht angegeben)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste (S/4HANA Cloud ab 2208); eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -287,9 +287,9 @@
       "staerken": "Sehr breiter Standard für Finanzen, Logistik und Produktion; international einsetzbar, auch für Gruppen mit vielen Gesellschaften.",
       "hinweise_fallstricke": "Die Lohnbuchhaltung gehört nicht zum ERP, sondern läuft separat über SuccessFactors – Swissdec-Zertifizierung prüfen. Die Public Edition setzt auf Standardprozesse: Wer stark individualisieren will, braucht eine andere Ausprägung. Für KMU unter 250 Mitarbeitenden meist überdimensioniert.",
       "geeignet_fuer": "Grössere Unternehmen und Gruppen, die international standardisierte Prozesse in der Cloud wollen.",
-      "quellen": "https://www.sap.com/swiss/products/hcm/baseline-activation-service-for-sap-successfactors-employee-central-with-sap-s4hana-cloud-public-edition.html | https://erpresearch.com/erp/sap-s4-hana-public-cloud/localizations | https://www.pwc.ch/en/services/consulting/sap-enabled-transformation/sap-erp-cloud-public-edition-explained.html",
+      "quellen": "https://www.sap.com/swiss/products/hcm/baseline-activation-service-for-sap-successfactors-employee-central-with-sap-s4hana-cloud-public-edition.html | https://erpresearch.com/erp/sap-s4-hana-public-cloud/localizations | https://www.pwc.ch/en/services/consulting/sap-enabled-transformation/sap-erp-cloud-public-edition-explained.html | https://www.postfinance.ch/de/support/partner/e-rechnung.html | https://www.swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 35
+      "anzahl_pruefpunkte": 33
     },
     {
       "id": "swiss21-abaninja",
@@ -350,7 +350,7 @@
       "einfuehrung_aufwand": "Gering",
       "vertragslaufzeit": "Prüfen – Laufzeit und Kündigung nicht eingesehen; Rückwechsel von einem bezahlten Paket zu Starter nicht möglich",
       "testversion": "Ja (Paket Starter dauerhaft gratis)",
-      "datenort": "Prüfen – als «Swiss Cloud» beworben, Rechenzentrum für AbaNinja nicht ausdrücklich genannt (DeepBox: Server in der Schweiz)",
+      "datenort": "Schweiz (Server in ISO-27001-zertifizierten Rechenzentren in der Schweiz laut AbaNinja-Hilfe; Betreiber nicht genannt)",
       "us_cloud_act": "Nein (Schweizer Anbieter; Eigentümerschaft nicht belegt)",
       "dpa_avv": "Ja (AVV der DeepCloud AG öffentlich verfügbar)",
       "datenexport": "Prüfen – nicht belegt",
@@ -358,9 +358,9 @@
       "staerken": "Gratis-Einstieg mit Buchhaltung, QR-Rechnung, Bankanbindung und Swissdec-zertifiziertem Lohn in einem, eBill-Kontingent inklusive und direkte Anbindung an Abacus-Treuhänder.",
       "hinweise_fallstricke": "Die Pakete begrenzen Nutzer, Dokumente pro Jahr und Lohnabrechnungen (Starter: 1 Nutzer, 1'000 Dokumente, 1 Lohnabrechnung) – wer wächst, zahlt Zusatznutzer (CHF 5) und Lohnabrechnungen (CHF 3.50) extra. Journalbuchungen, eigenes Geschäftsjahr und Saldosteuersatz gibt es erst ab Basic, die Lagerverwaltung erst im Paket Pro. Von einem bezahlten Paket kann man nicht mehr zurück zu Starter wechseln. Wo genau die AbaNinja-Daten liegen, nennt der Anbieter nicht ausdrücklich.",
       "geeignet_fuer": "Kleinstbetriebe und Gründer, die gratis oder günstig starten und später mit einem Abacus-Treuhänder zusammenarbeiten wollen.",
-      "quellen": "https://swiss21.org/preise | https://abaninja.ch/en/ | https://www.abaninja.ch/llms.txt | https://help.abaninja.ch/en/settings/company/subscriptions-and-add-ons/paid-additional-features.html | https://help.abaninja.ch/de/settings/company/subscriptions-and-add-ons/connection-abacus-financial-accounting/connection/how-do-i-activate-the-connection-to-abacus-financial-accounting.html | https://www.deepcloud.swiss/en/privacy-policy/ | https://swissdec.ch/certified-erp/",
+      "quellen": "https://swiss21.org/preise | https://abaninja.ch/en/ | https://www.abaninja.ch/llms.txt | https://help.abaninja.ch/en/settings/company/subscriptions-and-add-ons/paid-additional-features.html | https://help.abaninja.ch/de/settings/company/subscriptions-and-add-ons/connection-abacus-financial-accounting/connection/how-do-i-activate-the-connection-to-abacus-financial-accounting.html | https://www.deepcloud.swiss/en/privacy-policy/ | https://swissdec.ch/certified-erp/ | https://help.abaninja.ch/en/general/data-protection.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 23
+      "anzahl_pruefpunkte": 22
     },
     {
       "id": "banana-buchhaltung",
@@ -973,7 +973,7 @@
       "swissdec": "Ja (ONE 50 Lohn, ELM 5.0, «swissdec certified basic», Zert-Nr. 1041.26)",
       "mwst_ch": "Ja (MWST-Abrechnung laut Anbieter); Saldosteuersatz und ESTV-Übermittlung prüfen",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – «E-Rechnungen» im Paket Essential genannt, eBill nicht ausdrücklich",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste (ONE 50), auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Ja (E-Banking ab Paket Finance Essential); unterstützte Banken prüfen",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -997,9 +997,9 @@
       "staerken": "Günstige, verbreitete Schweizer Buchhaltung mit Swissdec-Lohn, als Software lokal oder in der Infoniqa-Cloud nutzbar.",
       "hinweise_fallstricke": "Das Produkt hiess früher Sage 50 Extra und läuft seit September 2026 unter der Marke Suiteify – klären Sie die langfristige Weiterentwicklung. Die Cloud ist ein gehosteter Desktop, keine Web-Anwendung; bei der Migration auf die neue Cloud mussten Mandanten auf MS SQL umgestellt sein. Fremdwährungen, Kostenstellen, Einkauf und Lager gibt es erst im teuersten Finanzpaket. Die veröffentlichten Preise stammen von einem Partner (Stand Oktober 2024).",
       "geeignet_fuer": "Kleine Schweizer Betriebe und Treuhänder, die eine bewährte Buchhaltungs- und Lohnsoftware mit Desktop-Bedienung suchen.",
-      "quellen": "https://swissdec.ch/certified-erp/ | https://www.infoniqa.com/ch-one-50 | https://www.mkf.ch/home/software/infoniqa/Preisliste-Infoniqa-ONE-50-Miete.pdf | https://onlinehelp.infoniqa.com/hc/de-ch/articles/24283580105362 | https://www.netzwoche.ch/news/2026-09-16/infoniqa-gruppe-fusioniert-unternehmen-und-marken-zu-suiteify",
+      "quellen": "https://swissdec.ch/certified-erp/ | https://www.infoniqa.com/ch-one-50 | https://www.mkf.ch/home/software/infoniqa/Preisliste-Infoniqa-ONE-50-Miete.pdf | https://onlinehelp.infoniqa.com/hc/de-ch/articles/24283580105362 | https://www.netzwoche.ch/news/2026-09-16/infoniqa-gruppe-fusioniert-unternehmen-und-marken-zu-suiteify | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 25
+      "anzahl_pruefpunkte": 24
     },
     {
       "id": "proffix-px5",
@@ -1115,7 +1115,7 @@
       "swissdec": "Nein (nicht auf der Swissdec-Liste; Lohn nicht im Produktumfang)",
       "mwst_ch": "Prüfen – verschiedene MWST-Systeme unterstützt, Schweizer Abrechnung nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 14.10; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – rechtssichere Archivierung mit Signatur laut Anbieter, GeBüV nicht ausdrücklich genannt",
@@ -1139,9 +1139,9 @@
       "staerken": "Sehr umfassende Warenwirtschaft, Service und E-Commerce aus einer Hand, Update-Garantie auch für Anpassungen und Betrieb in einer Schweizer Cloud.",
       "hinweise_fallstricke": "Auf der Produktseite fehlen Finanzbuchhaltung und Lohn – klären Sie, welche Buchhaltung und welche Swissdec-zertifizierte Lohnsoftware angebunden wird und was das kostet. Opacc führt Projekte selbst durch; Preise gibt es nur auf Anfrage und die Einführung ist eher aufwendig. Die KI-Analysen nutzen externe Modelle: fragen Sie, welche Daten das System verlassen.",
       "geeignet_fuer": "Handels-, Service- und Produktionsunternehmen ab etwa 20 Mitarbeitenden mit anspruchsvoller Logistik oder eigenem Online-Shop.",
-      "quellen": "https://swissdec.ch/certified-erp/ | https://www.opacc.ch/anwendungen/erp | https://www.opacc.ch/anwendungen/features/betrieb-in-der-opacc-cloud | https://www.opacc.ch/anwendungen/features/international | https://www.opacc.ch/anwendungen/features/online-management-information-system-mis | https://www.opacc.ch/anwendungen/features/integrales-dokument-management | https://www.opacc.ch/plattform/smart-cloud | https://www.opacc.ch/plattform/ai | https://www.opacc.ch/plattform/update-garantie | https://www.opacc.ch/uber-uns/opacc",
+      "quellen": "https://swissdec.ch/certified-erp/ | https://www.opacc.ch/anwendungen/erp | https://www.opacc.ch/anwendungen/features/betrieb-in-der-opacc-cloud | https://www.opacc.ch/anwendungen/features/international | https://www.opacc.ch/anwendungen/features/online-management-information-system-mis | https://www.opacc.ch/anwendungen/features/integrales-dokument-management | https://www.opacc.ch/plattform/smart-cloud | https://www.opacc.ch/plattform/ai | https://www.opacc.ch/plattform/update-garantie | https://www.opacc.ch/uber-uns/opacc | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 20
+      "anzahl_pruefpunkte": 19
     },
     {
       "id": "proconcept-erp",
@@ -1186,7 +1186,7 @@
       "swissdec": "Ja (ProConcept ERP, ELM 5.0, «swissdec certified basic», Zert-Nr. 1077.22)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -1210,9 +1210,9 @@
       "staerken": "Starkes Industrie-ERP aus der Westschweiz mit Produktion, umfangreicher Finanz- und Kostenrechnung sowie Swissdec-Lohn in einem System.",
       "hinweise_fallstricke": "Die ProConcept Cloud speichert die Daten zwar in der Schweiz, läuft aber auf Amazon Web Services – klären Sie die Folgen des US CLOUD Act. Zu QR-Rechnung, eBill und ISO 20022 macht die Website keine Angaben; lassen Sie sich das vorführen. Preise gibt es nur auf Anfrage, die Einführung ist ein Projekt mit ProConcept selbst.",
       "geeignet_fuer": "Produzierende Unternehmen ab etwa 50 Mitarbeitenden, besonders aus Uhren, Medtech, Elektronik und Maschinenbau.",
-      "quellen": "https://swissdec.ch/certified-erp/ | https://www.proconcept.ch/de/loesung/proconcept-cloud | https://www.proconcept.ch/de/finanzbuchhaltung | https://www.proconcept.ch/de/lohnbuchhaltung-human-resources | https://www.proconcept.ch/de/loesung/backoffice | https://www.proconcept.ch/de/fabrikation-pps | https://www.proconcept.ch/de/einkauf-verkauf-lager | https://www.proconcept.ch/de/unternehmen",
+      "quellen": "https://swissdec.ch/certified-erp/ | https://www.proconcept.ch/de/loesung/proconcept-cloud | https://www.proconcept.ch/de/finanzbuchhaltung | https://www.proconcept.ch/de/lohnbuchhaltung-human-resources | https://www.proconcept.ch/de/loesung/backoffice | https://www.proconcept.ch/de/fabrikation-pps | https://www.proconcept.ch/de/einkauf-verkauf-lager | https://www.proconcept.ch/de/unternehmen | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 26
+      "anzahl_pruefpunkte": 25
     },
     {
       "id": "myfactory-myfactory",
@@ -1470,7 +1470,7 @@
       "swissdec": "Ja (Odoo SA: ELM 5.0, ELM 5.1 und 5.3 selbst validiert; zusätzlich Lohnmodul der braintec AG zertifiziert)",
       "mwst_ch": "Prüfen – Schweizer MWST-Sätze hinterlegt; MWST-Abrechnung und Saldosteuersatz nicht belegt",
       "qr_rechnung": "Prüfen – QR-Rechnung im Standard laut Forum und Community-Modulen; offizielle Doku nicht eingesehen",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Partner (Rechnungsversand über PostFinance mit Lösungen von braintec oder Camptocamp ab Odoo 14 laut PostFinance-Softwarepartnerliste; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Ja (Format «Swiss ISO20022» für Zahlungsaufträge laut Doku)",
       "bankanbindung": "Prüfen – Banksynchronisation mit Schweizer Banken nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -1494,9 +1494,9 @@
       "staerken": "Sehr breites App-Angebot von der Buchhaltung über Lager und Fertigung bis zum Webshop in einem Abo, mit Swissdec-zertifiziertem Lohn und quelloffenem Kern.",
       "hinweise_fallstricke": "Der günstige Tarif Standard läuft nur in der Odoo-Cloud und enthält weder mehrere Firmen noch Studio oder externe API – dafür braucht es den Tarif Custom. Die tiefsten Preise sind Rabatte für die ersten 12 Monate und in Euro ausgewiesen. Odoo Online speichert in der Region Europa, Backups auch in Kanada; wer Daten in der Schweiz will, braucht einen eigenen Server oder einen Schweizer Hosting-Partner. Einführung und Anpassungen durch Partner kosten separat und machen oft den grösseren Teil aus.",
       "geeignet_fuer": "KMU, die Verkauf, Lager, Projekte oder Fertigung mit einem Partner in einem modularen System zusammenführen wollen.",
-      "quellen": "https://www.odoo.com/de_CH/pricing | https://www.odoo.com/de_DE/page/editions | https://www.odoo.com/cloud-sla | https://www.odoo.com/documentation/19.0/applications/finance/fiscal_localizations/switzerland.html | https://www.odoo.com/knowledge/article/49149 | https://www.swissdec.ch/certified-erp/",
+      "quellen": "https://www.odoo.com/de_CH/pricing | https://www.odoo.com/de_DE/page/editions | https://www.odoo.com/cloud-sla | https://www.odoo.com/documentation/19.0/applications/finance/fiscal_localizations/switzerland.html | https://www.odoo.com/knowledge/article/49149 | https://www.swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 22
+      "anzahl_pruefpunkte": 21
     },
     {
       "id": "microsoft-business-central",
@@ -1612,7 +1612,7 @@
       "swissdec": "Partner (Lohn über Schweizer Add-on; auf der Swissdec-Liste kein Eintrag für Business One gefunden – Zertifizierung des Add-ons prüfen)",
       "mwst_ch": "Prüfen – Schweizer MWST-Sätze 2024 laut SAP-Hinweis hinterlegt; MWST-Abrechnung nicht belegt",
       "qr_rechnung": "Partner (z.B. Add-on Swiss Payment von coresystems oder Belegerfassung von ck.solution)",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Partner (Rechnungsversand über PostFinance mit Lösungen mehrerer SAP-Partner laut PostFinance-Softwarepartnerliste; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Partner (pain.001 und camt.054 über Add-on Swiss Payment von coresystems)",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -1636,9 +1636,9 @@
       "staerken": "Bewährtes Standard-ERP für KMU mit Finanzen, Verkauf, Einkauf, Lager und einfacher Fertigung, wahlweise auf dem eigenen Server oder beim Partner betrieben.",
       "hinweise_fallstricke": "Schweizer Besonderheiten wie QR-Rechnung, Zahlungsverkehr nach ISO 20022 und Lohn kommen meist über kostenpflichtige Add-ons von Partnern – genau fragen, welche Add-ons im Angebot enthalten sind. Für Business One fand sich keine Lohnlösung auf der Swissdec-Liste; Zertifizierung des Lohn-Add-ons verlangen. Preise gibt es nur über Partner, der Datenort hängt vom gewählten Hosting-Partner ab.",
       "geeignet_fuer": "Handels- und Produktions-KMU, die ein international verbreitetes Standard-ERP über einen Schweizer Partner einführen wollen.",
-      "quellen": "https://www.sap.com/swiss/products/erp/business-one.html | https://erp-software.org/software/sap-business-one/ | https://helpdesk.coresystems.ch/hc/en-us/articles/360014205080 | https://www.sap.com/products/financial-management/partners/cksolution-gmbh-cksswissqr-automatic-capture-qr-esr-invoices.html | https://userapps.support.sap.com/sap/support/knowledge/en/3388229 | https://www.swissdec.ch/certified-erp/",
+      "quellen": "https://www.sap.com/swiss/products/erp/business-one.html | https://erp-software.org/software/sap-business-one/ | https://helpdesk.coresystems.ch/hc/en-us/articles/360014205080 | https://www.sap.com/products/financial-management/partners/cksolution-gmbh-cksswissqr-automatic-capture-qr-esr-invoices.html | https://userapps.support.sap.com/sap/support/knowledge/en/3388229 | https://www.swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 24
+      "anzahl_pruefpunkte": 23
     },
     {
       "id": "microsoft-dynamics-365-finance-scm",
@@ -1822,10 +1822,10 @@
       "reporting_bi": "Prüfen – nicht belegt",
       "mobile_app": "Prüfen – nicht belegt",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – kein Eintrag auf der Swissdec-Liste; Schweizer Lohn über Drittlösung klären",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 7.2, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -1849,9 +1849,9 @@
       "staerken": "Auf den produzierenden Mittelstand und den Grosshandel ausgerichtetes ERP mit Branchenwissen, das in der Cloud, auf dem eigenen Server oder kombiniert betrieben werden kann.",
       "hinweise_fallstricke": "Proalpha ist auf den deutschen Mittelstand ausgerichtet; welche Schweizer Funktionen (MWST, QR-Rechnung, Zahlungsverkehr nach ISO 20022) im Standard enthalten sind, ist öffentlich nicht dokumentiert und muss vor dem Entscheid demonstriert werden. Für Proalpha steht kein Lohnprogramm auf der Swissdec-Liste – der Lohn braucht eine separate Lösung. Preise gibt es nur auf Anfrage.",
       "geeignet_fuer": "Produzierende Mittelständler und Grosshändler, die ein branchenstarkes ERP aus dem DACH-Raum suchen.",
-      "quellen": "https://www.proalpha.com/de | https://www.proalpha.com/de/unternehmen | https://www.proalpha.com/de/loesungen/human-capital-management | https://www.unquote.com/dach/official-record/3006125/bregal-sells-majority-stake-in-proalpha-to-icg | https://www.swissdec.ch/certified-erp/",
+      "quellen": "https://www.proalpha.com/de | https://www.proalpha.com/de/unternehmen | https://www.proalpha.com/de/loesungen/human-capital-management | https://www.unquote.com/dach/official-record/3006125/bregal-sells-majority-stake-in-proalpha-to-icg | https://www.swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 42
+      "anzahl_pruefpunkte": 40
     },
     {
       "id": "ifs-ifs-cloud",
@@ -1893,7 +1893,7 @@
       "reporting_bi": "Prüfen – nicht belegt",
       "mobile_app": "Prüfen – nicht belegt",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – kein Eintrag auf der Swissdec-Liste; Schweizer Lohn über Drittlösung klären",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – Schweizer Länderlösung für QR-Rechnungen im Anwenderforum erwähnt, Anbieterdoku nicht eingesehen",
       "ebill": "Prüfen – nicht belegt",
@@ -1922,7 +1922,7 @@
       "geeignet_fuer": "Mittlere und grössere Unternehmen mit Fertigung, Projekten oder Serviceorganisation, die ERP und Service auf einer Plattform wollen.",
       "quellen": "https://www.ifs.com/en/insights/news/ifs-attracts-eur-15-billion-valuation | https://docs.ifs.com/techdocs/25r2/010_overview/020_high_level_architecture | https://community.ifs.com/finance-financials-42/how-swiss-qr-bill-country-solution-works-for-camt-054-file-69010 | https://www.swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 41
+      "anzahl_pruefpunkte": 40
     },
     {
       "id": "infor-cloudsuite-industrial",
@@ -1964,7 +1964,7 @@
       "reporting_bi": "Prüfen – nicht belegt",
       "mobile_app": "Prüfen – nicht belegt",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – kein Eintrag auf der Swissdec-Liste; Schweizer Lohn über Drittlösung klären",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – in der Infor-Doku keine Schweizer Lokalisierung für CloudSuite Industrial gefunden (nur z.B. Deutschland)",
       "qr_rechnung": "Prüfen – QR-Rechnung nur für andere Infor-Produkte (LN, M3) dokumentiert",
       "ebill": "Prüfen – nicht belegt",
@@ -1993,7 +1993,7 @@
       "geeignet_fuer": "Fertigungsunternehmen mit Variantenfertigung oder Auftragsfertigung, die ein spezialisiertes Produktions-ERP mit Partner einführen.",
       "quellen": "https://infor.com/products/cloudsuite-industrial | https://www.infor.com/en-nl/news/infor-cloud-suite-industrial-syte-line-now-available-for-the-manufacturing-industry | https://docs.infor.com/csi/2025.x/en-us/csbiolh/germany_country_cl_sl/nww1764657510266.html | https://www.jonesday.com/en/practices/experience/2020/04/koch-industries-to-acquire-remaining-equity-stake | https://wm-synergy.com/products/infor-cloudsuite-industrial | https://www.swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 41
+      "anzahl_pruefpunkte": 40
     },
     {
       "id": "epicor-kinetic",
@@ -2035,7 +2035,7 @@
       "reporting_bi": "Prüfen – nicht belegt",
       "mobile_app": "Prüfen – nicht belegt",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – kein Eintrag auf der Swissdec-Liste; Schweizer Lohn über Drittlösung klären",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – Schweizer Länderfunktion nennt ESR-Referenzen; QR-Rechnung nicht belegt",
       "ebill": "Prüfen – nicht belegt",
@@ -2064,7 +2064,7 @@
       "geeignet_fuer": "Fertigungsunternehmen, die ein spezialisiertes Produktions-ERP mit Cloud-Betrieb suchen.",
       "quellen": "https://epicor.com/en/products/epicor-financials/country-specific-functionality/switzerland | https://www.epicor.com/en-us/products/enterprise-resource-planning-erp/kinetic/cloud-business-platform/ | https://www.cio.com/article/4114170/epicor-sets-timeline-to-sunset-on-prem-erp-as-cloud-becomes-the-only-path-forward.html | https://www.techtarget.com/enterprise-software/news/252489229/Whats-next-for-Epicor-after-its-sale | https://www.swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 40
+      "anzahl_pruefpunkte": 39
     },
     {
       "id": "vertec-vertec",
@@ -2180,7 +2180,7 @@
       "swissdec": "Ja (mySORBA.Lohn, ELM 5.0; 5.1 und 5.3 selbst validiert)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Ja (ab Büro Basic)",
-      "ebill": "Prüfen – E-Rechnung ab Buchhaltung Pro, eBill nicht ausdrücklich belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -2204,9 +2204,9 @@
       "staerken": "Durchgängige Lösung für das Bauhaupt- und Baunebengewerbe von der NPK-Offerte über Rapporte und Werkhof bis zur Buchhaltung, mit vielen Baustellen-Apps und Hosting in der Schweiz.",
       "hinweise_fallstricke": "Preise werden nicht veröffentlicht und hängen von Paketen und Nutzertypen ab – verlangen Sie eine Offerte über alle Pakete und Zusatzmodule. Viele Buchhaltungsfunktionen (Fremdwährung, Kostenrechnung, Anlagen, mehrere Mandanten) gibt es erst im Paket Pro, Lohn ist ein Zusatzmodul. Eine Testversion fehlt. Seit 2024 gehört SORBA zur Systabuild Software Group; klären Sie, wer dahintersteht und wo die KI-Funktionen Daten verarbeiten.",
       "geeignet_fuer": "Bau- und Ausbaubetriebe (Bauhauptgewerbe, Holz-, Metall-, Gerüstbau, Maler, Gartenbau), die Offerte, Baustelle und Buchhaltung in einem System führen wollen.",
-      "quellen": "https://www.sorba.ch | https://www.sorba.ch/preise | https://www.sorba.ch/software/outsourcing | https://www.sorba.ch/software/ki | https://www.itreseller.ch/Artikel/103806/Urs_Weber_wird_CEO_von_Sorba_EDV.html | https://swissdec.ch/certified-erp/",
+      "quellen": "https://www.sorba.ch | https://www.sorba.ch/preise | https://www.sorba.ch/software/outsourcing | https://www.sorba.ch/software/ki | https://www.itreseller.ch/Artikel/103806/Urs_Weber_wird_CEO_von_Sorba_EDV.html | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 27
+      "anzahl_pruefpunkte": 26
     },
     {
       "id": "messerli-bausoftware",
@@ -2251,7 +2251,7 @@
       "swissdec": "Ja (MesserliLohn, ELM 5.0; 5.1 und 5.3 selbst validiert)",
       "mwst_ch": "Ja (MWST-Abrechnung versandbereit laut Anbieter)",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – E-Rechnung als Modul aufgeführt, eBill nicht ausdrücklich belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – elektronischer Zahlungslauf belegt, direkte Bankanbindung nicht",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -2275,9 +2275,9 @@
       "staerken": "Bauadministration für Planer und Bauherren (NPK-Devisierung, eBKP-Kostenplanung, Ausschreibung, Baufinanz) und kaufmännische Lösung mit Swissdec-zertifiziertem Lohn aus einer Hand.",
       "hinweise_fallstricke": "Messerli deckt zwei Welten ab: die Bauadministration für Architekten, Bauleitung und Bauherren und die Businesslösung für Installateure und Unternehmer – klären Sie, welche Module Sie wirklich brauchen. Preise und Hosting-Standort sind nicht veröffentlicht; lassen Sie sich beides schriftlich bestätigen. Für die Ausmasserfassung und Baustellenrapporte von Bauunternehmen ist der Umfang nicht belegt.",
       "geeignet_fuer": "Architektur- und Ingenieurbüros, Bauleitungen sowie Elektro- und HLKS-Betriebe, die NPK-Devisierung und Kostenplanung mit Buchhaltung und Lohn verbinden wollen.",
-      "quellen": "https://www.messerli.ch | https://www.messerli.ch/de/bauadministration | https://www.messerli.ch/de/Businessl%C3%B6sung | https://www.messerli.ch/de/finanzbuchhaltung | https://www.messerli.ch/de/it-infrastruktur-cloud-hosting | https://swissdec.ch/certified-erp/",
+      "quellen": "https://www.messerli.ch | https://www.messerli.ch/de/bauadministration | https://www.messerli.ch/de/Businessl%C3%B6sung | https://www.messerli.ch/de/finanzbuchhaltung | https://www.messerli.ch/de/it-infrastruktur-cloud-hosting | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 36
+      "anzahl_pruefpunkte": 35
     },
     {
       "id": "garaio-rem",
@@ -2319,7 +2319,7 @@
       "reporting_bi": "Voll (Auswertungen zu Kennzahlen, Finanzen, Leerstand und Vermietung)",
       "mobile_app": "Prüfen – Vor-Ort-Applikation OnSite und digitales Abnahmeprotokoll, Plattform nicht belegt",
       "ki_funktionen": "Prüfen – Kontierungsvorschläge in Smart.Invoice; KI-Einsatz nicht dokumentiert",
-      "swissdec": "Prüfen – nicht auf der Swissdec-Liste",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
       "ebill": "Prüfen – nicht belegt",
@@ -2346,9 +2346,9 @@
       "staerken": "Spezialisierte Immobilienbewirtschaftung mit Mietverträgen, Nebenkosten, Stockwerkeigentum sowie Mieter- und Eigentümerportal, auf Open-Source-Basis und ISO-27001-zertifiziert.",
       "hinweise_fallstricke": "GARAIO REM ist eine Fachlösung für die Bewirtschaftung, kein allgemeines ERP: Ob Finanzbuchhaltung, Lohn und Zahlungsverkehr enthalten sind oder über eine Schnittstelle laufen, ist nicht veröffentlicht. Preise, Betriebsmodell und Datenstandort (belegt sind nur Backups in der Schweiz) müssen Sie direkt erfragen. Kleinere Verwaltungen bis 3'500 Objekte erhalten die Light-Version über Partner.",
       "geeignet_fuer": "Immobilienbewirtschafter und Eigentümer mit grösseren Portfolios, die Mietverwaltung, Nebenkosten und Stockwerkeigentum digital abwickeln wollen.",
-      "quellen": "https://www.garaio-rem.ch | https://www.garaio-rem.ch/de/garaio-rem-entdecken/funktionen | https://www.garaio-rem.ch/de/garaio-rem-entdecken/technologie | https://www.garaio-rem.ch/de/datenschutz-sicherheit | https://www.garaio-rem.ch/de/ueber-garaio-rem | https://www.garaio-rem.ch/de/garaio-rem-entdecken-garaio-rem-light | https://www.oaklins.com/ch/en/deals/105632/",
+      "quellen": "https://www.garaio-rem.ch | https://www.garaio-rem.ch/de/garaio-rem-entdecken/funktionen | https://www.garaio-rem.ch/de/garaio-rem-entdecken/technologie | https://www.garaio-rem.ch/de/datenschutz-sicherheit | https://www.garaio-rem.ch/de/ueber-garaio-rem | https://www.garaio-rem.ch/de/garaio-rem-entdecken-garaio-rem-light | https://www.oaklins.com/ch/en/deals/105632/ | https://www.swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 45
+      "anzahl_pruefpunkte": 44
     },
     {
       "id": "bison-erp",
@@ -2390,10 +2390,10 @@
       "reporting_bi": "Modul (BI Services)",
       "mobile_app": "Modul (u.a. BISON Store Mobile, Q-Check App)",
       "ki_funktionen": "Prüfen – Zusatz «KI Gregis» aufgeführt, Funktion nicht beschrieben",
-      "swissdec": "Prüfen – nicht auf der Swissdec-Liste",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -2417,9 +2417,9 @@
       "staerken": "Branchenwissen aus dem eigenen Agrar- und Detailhandelskonzern (fenaco-LANDI): Kontrakte, Silo- und Schüttgut, Chargenrückverfolgung, Verzollung und Kassen in einer Produktfamilie.",
       "hinweise_fallstricke": "Unter dem Namen «Bison Process» tritt das Produkt auf der Website nicht mehr auf – das Angebot heisst heute BISON Trading, Agrar, Retail bzw. Energie ERP; lassen Sie sich die genaue Produktlinie bestätigen. Finanzbuchhaltung und Lohn sind nicht als eigene Module belegt, Lohn ist nicht Swissdec-zertifiziert. Preise und Datenstandort sind nicht veröffentlicht.",
       "geeignet_fuer": "Grössere Agrarhändler, Genossenschaften sowie Gross- und Rohstoffhändler mit komplexer Logistik.",
-      "quellen": "https://bison-group.com/ | https://bison-group.com/grosshandel/trading-erp/ | https://www.bison-group.com/farming/agrar-erp/ | https://bison-group.com/bison-group/ueber-bison/ | https://www.ercis.org/node/93 | https://swissdec.ch/certified-erp/",
+      "quellen": "https://bison-group.com/ | https://bison-group.com/grosshandel/trading-erp/ | https://www.bison-group.com/farming/agrar-erp/ | https://bison-group.com/bison-group/ueber-bison/ | https://www.ercis.org/node/93 | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 41
+      "anzahl_pruefpunkte": 39
     },
     {
       "id": "optiwork-domus",
@@ -2464,7 +2464,7 @@
       "swissdec": "Ja (DOMUS, ELM 5.0)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – Versand über E-Rechnungsstandards belegt, eBill nicht ausdrücklich",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 25, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Ja (Zahlungsverkehr nach ISO 20022 laut Anbieter)",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -2488,9 +2488,9 @@
       "staerken": "Bewährtes Handwerker-ERP mit Kalkulation nach Branchenverbänden, Service- und Wartungsverträgen, Lager, Buchhaltung und Swissdec-zertifiziertem Lohn in einem System.",
       "hinweise_fallstricke": "Optiwork gehört über die FOG Software Group (USA) zu Constellation Software – klären Sie bei Cloud-Nutzung Hosting-Standort und US-Zugriff (CLOUD Act) vertraglich. Preise und Testversion gibt es nicht öffentlich, nur eine Live-Demo. Auswertungen laufen zusätzlich über Microsoft Power BI, das separat lizenziert wird.",
       "geeignet_fuer": "Handwerks- und Ausbaubetriebe (Metallbau, Gebäudehülle, Maler und Gipser, Holzbau, Haustechnik) mit Projekt- und Servicegeschäft.",
-      "quellen": "https://optiwork.ch/ | https://optiwork.ch/domus/ | https://optiwork.ch/ueber-uns/ | https://swissdec.ch/certified-erp/",
+      "quellen": "https://optiwork.ch/ | https://optiwork.ch/domus/ | https://optiwork.ch/ueber-uns/ | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 33
+      "anzahl_pruefpunkte": 32
     },
     {
       "id": "swisspost-dialog-g6",
@@ -2535,7 +2535,7 @@
       "swissdec": "Ja (Dialog Lohn, ELM 5.0; 5.1 selbst validiert)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -2559,9 +2559,9 @@
       "staerken": "Gesamtlösung für Gemeinden mit Finanzen, Einwohnern, Steuern, Gebühren, Liegenschaften, Lohn und Dokumenten auf einer Datenbasis, browserbasiert und Swissdec-zertifiziert.",
       "hinweise_fallstricke": "Die Post hat Dialog und T2i im April 2026 zu Swiss Post Digital Government zusammengelegt und im Juni 2026 die neue Plattform Civetica lanciert – klären Sie, wie lange Dialog G6 weiterentwickelt wird und wann eine Migration ansteht. Öffentliche Angaben zu Preisen, Hosting-Standort und HRM2 fehlen. Die frühere Produktseite ist nicht mehr erreichbar.",
       "geeignet_fuer": "Kleine und mittlere Gemeinden und Städte, die Verwaltung, Finanzen und Lohn in einer Gesamtlösung führen wollen.",
-      "quellen": "https://digital-solutions.post.ch/hubfs/2023/E-Government/Dokumente/Dialog/Factsheet_Dialog_G6_de.pdf | https://www.netzwoche.ch/news/2026-06-11/post-lanciert-e-gov-plattform-fuer-schweizer-gemeinden | https://www.netzwoche.ch/news/2025-11-13/die-post-fusioniert-t2i-und-dialog-verwaltungs-data | https://www.swisspost.ch/en/about-us/media/press-releases/2021/swiss-post-to-acquire-dialog-verwaltungs-data-ag | https://www.swisscom.ch/de/business/kmu/more/testimonials/gemeinde-gampel-bratsch.html | https://swissdec.ch/certified-erp/",
+      "quellen": "https://digital-solutions.post.ch/hubfs/2023/E-Government/Dokumente/Dialog/Factsheet_Dialog_G6_de.pdf | https://www.netzwoche.ch/news/2026-06-11/post-lanciert-e-gov-plattform-fuer-schweizer-gemeinden | https://www.netzwoche.ch/news/2025-11-13/die-post-fusioniert-t2i-und-dialog-verwaltungs-data | https://www.swisspost.ch/en/about-us/media/press-releases/2021/swiss-post-to-acquire-dialog-verwaltungs-data-ag | https://www.swisscom.ch/de/business/kmu/more/testimonials/gemeinde-gampel-bratsch.html | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 42
+      "anzahl_pruefpunkte": 41
     },
     {
       "id": "casymir-casymir",
@@ -3952,7 +3952,7 @@
       "reporting_bi": "Prüfen – nicht belegt",
       "mobile_app": "Prüfen – nicht belegt",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – für Fusion keine Lösung auf der Swissdec-Liste gefunden",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – Schweizer MWST-Abrechnung in Fusion nicht belegt",
       "qr_rechnung": "Prüfen – kein Standard belegt; in der Oracle-Community sucht ein Kunde eine Lösung, QR-Rechnungen beim Debitorendruck auszugeben",
       "ebill": "Prüfen – nicht belegt",
@@ -3981,7 +3981,7 @@
       "geeignet_fuer": "Grosse, international tätige Unternehmen und Gruppen, die Finanzen und Einkauf konzernweit in einer Cloud-Suite vereinheitlichen wollen.",
       "quellen": "https://www.oracle.com/erp/ | https://www.oracle.com/ch-fr/news/announcement/ef-chooses-oracle-fusion-cloud-applications-to-simplify-global-operations-management-2025-10-27/ | https://community.oracle.com/CustomerConnect/discussion/940935/fusion-bip-print-receivables-transactions-with-swiss-qr-bill-swiss-qr-code | https://docs.oracle.com/cd/G40410_01/hcm92pbr53/eng/hcm/hgpc/CreatingPaymentFiles_ISO20022_AndReportsInGlobalPayrollForSwitzerland.html | https://docs.oracle.com/en/cloud/saas/analytics/26r1/fawag/region-availability.html | https://heise.de/-10280809 | https://www.swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 43
+      "anzahl_pruefpunkte": 42
     },
     {
       "id": "unit4-unit4-erp",
@@ -4591,7 +4591,7 @@
       "reporting_bi": "Basis (Mieterspiegel, Standardauswertungen; individuelle Reports als Option)",
       "mobile_app": "Modul (Abnahme App für Wohnungsabnahmen auf Android und iOS)",
       "ki_funktionen": "Prüfen – «intelligente Assistenten» erwähnt, KI-Einsatz nicht dokumentiert",
-      "swissdec": "Prüfen – nicht auf der Swissdec-Liste",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Modul (MWST ab Paket Professional, sonst Option)",
       "qr_rechnung": "Teilweise (QR-Rechnungen einlesen in Kredi Flow; QR-Druck erwähnt, Umfang prüfen)",
       "ebill": "Prüfen – nicht belegt",
@@ -4620,7 +4620,7 @@
       "geeignet_fuer": "Kleine und mittlere Immobilienverwaltungen und Genossenschaften, die Mietliegenschaften und Stockwerkeigentum mit integrierter Buchhaltung bewirtschaften.",
       "quellen": "https://www.wwimmo.ch/produkte/ | https://www.wwimmo.ch/produkte/immotop2/ | https://www.wwimmo.ch/produkte/preise-immotop2-cloud/ | https://swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 31
+      "anzahl_pruefpunkte": 30
     },
     {
       "id": "ww-rimo-r5",
@@ -4662,7 +4662,7 @@
       "reporting_bi": "Basis (über 200 Standardauswertungen laut Anbieter)",
       "mobile_app": "Modul (Abnahme App für Wohnungsabnahmen auf Android und iOS)",
       "ki_funktionen": "Prüfen – nicht belegt",
-      "swissdec": "Prüfen – nicht auf der Swissdec-Liste",
+      "swissdec": "Nein (nicht auf der Swissdec-Liste, Stand 13.11.2026; Schweizer Lohn nur über eine zertifizierte Drittlösung)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Teilweise (QR-Rechnungen einlesen in Kredi Flow; Erstellung nicht belegt)",
       "ebill": "Prüfen – nicht belegt",
@@ -4691,7 +4691,7 @@
       "geeignet_fuer": "Mittlere und grosse Immobilienbewirtschafter mit umfangreichen Portfolios aus Miete, Stockwerkeigentum und Genossenschaftswohnungen, auch in der Romandie und im Tessin.",
       "quellen": "https://www.wwimmo.ch/produkte/ | https://www.wwimmo.ch/produkte/rimor5/ | https://swissdec.ch/certified-erp/",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 37
+      "anzahl_pruefpunkte": 36
     },
     {
       "id": "integral-concept-mechanik-3000",
