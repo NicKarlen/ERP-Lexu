@@ -1,0 +1,26 @@
+{% macro sk(w, kurz=false) -%}
+<span class="sk sk-{{ w.key }}" title="{{ w.label }}{% if w.zusatz %}: {{ w.zusatz }}{% endif %}"><i aria-hidden="true">{{ zeichen(w.key) }}</i>{{ w.kurz if kurz else w.label }}</span>
+{%- endmacro %}
+
+{% macro seg(l) -%}
+<span class="seg seg-{{ l.seg.id }}"><span class="si">{{ icon(l.seg.icon, 14) }}</span>{{ l.seg.label }}</span>
+{%- endmacro %}
+
+{# «Fingerabdruck»: die sieben Bereiche aus dem Berater als Punkte #}
+{% macro abdruck(l, mit_text=false) -%}
+<span class="abdruck" role="img" aria-label="{% for b in BEDARF_LISTE %}{{ b.label }}: {{ l.bedarf(b.key).label }}{% if not loop.last %}, {% endif %}{% endfor %}">
+  {%- for b in BEDARF_LISTE %}{% set w = l.bedarf(b.key) %}<span class="ad sk-{{ w.key }}" title="{{ b.label }}: {{ w.label }}"><i aria-hidden="true">{{ zeichen(w.key) }}</i>{% if mit_text %}<em>{{ b.label }}</em>{% endif %}</span>{% endfor -%}
+</span>
+{%- endmacro %}
+
+{% macro avatar() -%}
+<div class="av" aria-hidden="true"><img src="{{ root }}static/maskottchen/kopf.webp" width="40" height="40" alt=""></div>
+{%- endmacro %}
+
+{% macro tonliste(punkte, klasse="") -%}
+<ul class="ton-liste {{ klasse }}">{% for k in punkte %}<li class="ton-{{ k.ton }}"><span class="ti" aria-hidden="true">{{ zeichen(k.ton) }}</span><span>{{ k.text }}</span></li>{% endfor %}</ul>
+{%- endmacro %}
+
+{% macro kosten(l) -%}
+{% if l.kosten %}<span class="kst kst-{{ l.kosten.rang }}" title="Kostenstufe: {{ l.kosten.text }}">{% for i in range(4) %}<i class="{% if i <= l.kosten.rang %}on{% endif %}"></i>{% endfor %}<span>{{ l.kosten.label }}</span></span>{% else %}<span class="kst kst-offen"><span>Kosten offen</span></span>{% endif %}
+{%- endmacro %}

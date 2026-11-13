@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de-CH" data-root="{{ root }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ERP für Schweizer KMU{% endblock %} · ERP-Verzeichnis</title>
+  <meta name="description" content="{% block description %}Welches ERP deckt ab, was mein Betrieb braucht – und was kostet es? Unabhängiges Verzeichnis von ERP- und Buchhaltungslösungen für Schweizer KMU, mit Modul-Matrix, Schweiz-Funktionen und Preisen.{% endblock %}">
+  {# Vorschau beim Teilen (LinkedIn, Teams, Slack …). LinkedIn braucht absolute Adressen: site_url setzt GitHub Actions. #}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="ERP-Verzeichnis">
+  <meta property="og:title" content="{{ self.title() }} · ERP-Verzeichnis">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:image" content="{{ site_url or root }}static/og-bild.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta property="og:image:alt" content="ERP-Verzeichnis – Welches ERP passt zu meinem Betrieb?">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#5b5bd6">
+  {% if site_url %}
+  <meta property="og:url" content="{{ site_url }}{{ pfad }}">
+  <link rel="canonical" href="{{ site_url }}{{ pfad }}">
+  {% endif %}
+  {% block head %}{% endblock %}
+  <link rel="stylesheet" href="{{ root }}static/style.css">
+  <link rel="icon" type="image/png" href="{{ root }}static/maskottchen/kopf.png">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip" href="#inhalt">Zum Inhalt</a>
+  <header class="topbar">
+    <div class="topbar-inner {% block topbar_class %}wrap{% endblock %}">
+      <a class="brand" href="{{ url() }}">
+        <span class="brand-m"><img src="{{ root }}static/maskottchen/kopf.webp" width="34" height="34" alt=""></span>
+        <span class="brand-t"><b>ERP</b>-Verzeichnis</span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü" data-menu>{{ icon("menu", 20) }}</button>
+      <nav class="nav" id="hauptnav" aria-label="Hauptnavigation">
+        <a href="{{ url() }}" {% if seite == 'berater' %}aria-current="page"{% endif %}>Berater</a>
+        <a href="{{ url('verzeichnis/') }}" {% if seite in ('verzeichnis', 'detail') %}aria-current="page"{% endif %}>Verzeichnis</a>
+        <a href="{{ url('vergleich/') }}" {% if seite == 'vergleich' %}aria-current="page"{% endif %}>Vergleich</a>
+        <a href="{{ url('grundlagen/') }}" {% if seite == 'grundlagen' %}aria-current="page"{% endif %}>Grundlagen</a>
+        <a href="{{ url('marktanalyse/') }}" {% if seite == 'marktanalyse' %}aria-current="page"{% endif %}>Marktanalyse</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">{% block content %}{% endblock %}</main>
+
+  {% block footer %}
+  <footer class="footer">
+    <div class="wrap footer-in">
+      <img class="footer-mk" src="{{ root }}static/maskottchen/kopf-ruhig.webp" width="56" height="56" alt="">
+      <a class="footer-marke" href="{{ url() }}"><b>ERP</b>-Verzeichnis</a>
+      <nav class="footer-links" aria-label="Weitere Seiten">
+        <a href="{{ url('ueber/') }}">Über das Projekt</a>
+        <a href="{{ url('ueber/') }}#fehler">Fehler melden</a>
+        <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener">Lizenz CC BY 4.0</a>
+      </nav>
+      <p>{{ daten_hinweis }}</p>
+      <p class="muted">{{ daten_anzahl }} Lösungen · Datenstand {{ daten_stand|datum }} · keine Werbung, kein Tracking</p>
+    </div>
+  </footer>
+  {% endblock %}
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Steckbrief">
+    <div class="dr-hd">
+      <a class="btn btn-t" id="drawer-link" href="#">{{ icon("external", 16) }} Als Seite öffnen</a>
+      <button class="btn btn-t" type="button" data-close>{{ icon("x", 16) }} Schliessen</button>
+    </div>
+    <div class="dr-bd" id="drawer-body"></div>
+  </aside>
+  {% block scripts %}{% endblock %}
+  <script src="{{ root }}static/app.js" defer></script>
+</body>
+</html>

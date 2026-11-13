@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% from "_makros.html" import seg, abdruck, kosten, sk with context %}
+{% block title %}Verzeichnis{% endblock %}
+{% block description %}Alle {{ total }} ERP- und Buchhaltungslösungen für Schweizer KMU – filterbar nach Grösse, Modulen und Betrieb, mit Steckbrief und Quellen.{% endblock %}
+{% block body_class %}seite-breit{% endblock %}
+{% block topbar_class %}voll{% endblock %}
+
+{% block content %}
+<div class="vz voll">
+  <section class="vz-kopf">
+    <div class="vz-titel">
+      <p class="eyebrow">Verzeichnis</p>
+      <h1>Alle Lösungen im Überblick</h1>
+      <p>{{ total }} ERP- und Buchhaltungslösungen für Schweizer KMU. Die Punkte zeigen auf einen Blick, wie die sieben wichtigsten Bereiche abgedeckt sind – klicken Sie auf eine Lösung für den ganzen Steckbrief.</p>
+    </div>
+    <div class="vz-kopf-mk">
+      {{ mk("laptop", "mk-kopf", schmuck=true) }}
+      <div class="vz-legende">
+        <b>So lesen Sie die Punkte</b>
+        <div class="vz-leg-skala">{% for k in ("voll", "modul", "partner", "basis", "nein", "pruefen") %}{{ sk(skala[k]) }}{% endfor %}</div>
+        <div class="vz-leg-abdruck">{% for b in bedarf %}<span>{{ loop.index }} {{ b.label }}</span>{% endfor %}</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="vz-body">
+    <form class="vz-side" method="get" action="./" id="filter">
+      <details class="vz-filter" open>
+        <summary>{{ icon("filter", 16) }} Filter <span class="chip chip-a" data-aktiv hidden>aktiv</span></summary>
+
+        <label class="vz-suche">{{ icon("search", 16) }}<span class="sr">Suche</span>
+          <input type="search" name="q" value="" placeholder="Lösung, Anbieter …">
+        </label>
+
+        <fieldset class="vz-grp">
+          <legend>Mitarbeitende</legend>
+          <label><input type="radio" name="groesse" value="" checked><span>Alle Grössen</span></label>
+          {% for g in groessen %}
+          <label><input type="radio" name="groesse" value="{{ g.key }}"><span>{{ g.titel }}</span><em data-n="groesse:{{ g.key }}"></em></label>
+          {% endfor %}
+        </fieldset>
+
+        <fieldset class="vz-grp">
+          <legend>Benötigte Bereiche <small>(alle gewählten)</small></legend>
+          {% for b in bedarf %}
+          <label><input type="checkbox" name="modul" value="{{ b.key }}"><span class="li">{{ icon(b.icon, 15) }}</span><span>{{ b.label }}</span><em data-n="modul:{{ b.key }}"></em></label>
+          {% endfor %}
+          <p class="vz-hilfe">Blendet Lösungen aus, die den Bereich nicht anbieten. «Noch offen» bleibt sichtbar.</p>
+        </fieldset>
+
+        <fieldset class="vz-grp">
+          <legend>Betrieb</legend>
+          {% for wert, ic, label, hilfe in betrieb_optionen %}
+          <label><input type="radio" name="betrieb" value="{{ wert }}" {% if not wert %}checked{% endif %}><span class="li">{{ icon(ic, 15) }}</span><span>{{ label }}</span><em data-n="betrieb:{{ wert }}"></em></label>
+          {% endfor %}
+        </fieldset>
+
+        <fieldset class="vz-grp">
+          <legend>Art der Lösung</legend>
+          <label><input type="radio" name="segment" value="" checked><span>Alle</span></label>
+          {% for s in segmente %}
+          <label><input type="radio" name="segment" value="{{ s.id }}"><span class="li">{{ icon(s.icon, 15) }}</span><span>{{ s.label }}</span><em data-n="segment:{{ s.id }}"></em></label>
+          {% endfor %}
+        </fieldset>
+
+        <fieldset class="vz-grp">
+          <legend>Schweiz & Datenschutz</legend>
+          <label><input type="checkbox" name="swissdec" value="1"><span>Lohn Swissdec-zertifiziert</span><em data-n="swissdec:1"></em></label>
+          <label><input type="checkbox" name="datench" value="1"><span>Daten in der Schweiz</span><em data-n="datench:1"></em></label>
+          <label><input type="checkbox" name="cloudact" value="1"><span>Kein US CLOUD Act</span><em data-n="cloudact:1"></em></label>
+        </fieldset>
+
+        <div class="vz-aktion">
+          <button class="btn btn-p js-weg" type="submit">Anwenden</button>
+          <a class="btn btn-t" href="./" data-reset hidden>Alle Filter zurücksetzen</a>
+        </div>
+      </details>
+    </form>
+
+    <section class="vz-main" aria-live="polite">
+      <div class="vz-res">
+        <h2><span data-anzahl>{{ loesungen|length }} Lösungen</span><span data-anzahl-info>– alle Einträge</span></h2>
+        <div class="vz-res-r">
+          <a class="btn btn-t" href="./" data-reset hidden>{{ icon("x", 15) }} Filter zurücksetzen</a>
+          <a class="btn btn-g" href="{{ url('vergleich/') }}" data-vergleich-alle>{{ icon("compare", 15) }} Vergleichen</a>
+        </div>
+      </div>
+
+      <div class="vz-tbl" role="table" aria-label="ERP-Lösungen" id="vz-tbl">
+        <div class="vz-head" role="row">
+          <span role="columnheader">Lösung</span>
+          <span role="columnheader">Art &amp; Grösse</span>
+          <span role="columnheader" title="Lohn · Lager · Produktion · Projekte & Zeit · CRM · Webshop · Mehrere Firmen">Bereiche</span>
+          <span role="columnheader">Betrieb</span>
+          <span role="columnheader">Kosten</span>
+          <span role="columnheader">Darauf achten</span>
+        </div>
+        {% for l in loesungen %}
+        <a class="vz-row" role="row" href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer data-id="{{ l.id }}"
+           data-g="{{ l.groessen|join(' ') }}" data-seg="{{ l.seg.id }}" data-bt="{{ l.betrieb|join(' ') }}"
+           data-m="{% for k, v in l.bedarf_werte.items() %}{{ k }}:{{ v }} {% endfor %}"
+           data-sd="{{ l.swissdec }}" data-ort="{{ l.dort.key }}" data-ca="{{ l.cloud_act }}"
+           data-such="{{ l.suchtext }}">
+          <span class="c-tool" role="cell">
+            <span class="nm">{{ l.name }}</span>
+            <span class="an">{{ l.anbieter }}{% if l.pruefpunkte %}<span class="chip chip-o" title="Angaben, die noch beim Anbieter geprüft werden müssen">{{ l.pruefpunkte }} offen</span>{% endif %}</span>
+          </span>
+          <span class="c-art" role="cell">{{ seg(l) }}<span class="muted klein">{{ l.groessen_text }}</span></span>
+          <span class="c-abdruck" role="cell">{{ abdruck(l) }}</span>
+          <span class="c-betrieb" role="cell">{{ l.betrieb_text }}</span>
+          <span class="c-kosten" role="cell">{{ kosten(l) }}<span class="muted klein">{{ l.raw.preis_einstieg }}</span></span>
+          <span class="c-hinweis" role="cell">{{ l.raw.hinweise_fallstricke or "–" }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="vz-leer" data-leer hidden>
+        {{ mk("tablet", "mk-leer", schmuck=true) }}
+        <h3>Keine Lösung für diese Auswahl</h3>
+        <p>Entfernen Sie einen Bereich oder wählen Sie eine andere Grösse.</p>
+        <a class="btn btn-g" href="./">Alle Filter zurücksetzen</a>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% from "_makros.html" import seg, sk, kosten with context %}
+{% block title %}Vergleich{% endblock %}
+{% block description %}Zwei bis vier ERP-Lösungen nebeneinander: Modul-Matrix, Schweiz-Funktionen, Kosten und Datenschutz.{% endblock %}
+{% block body_class %}seite-breit{% endblock %}
+{% block topbar_class %}voll{% endblock %}
+
+{% block content %}
+<div class="vg voll">
+  <section class="vg-kopf">
+    <div>
+      <p class="eyebrow">Vergleich</p>
+      <h1>Nebeneinander vergleichen</h1>
+      <p class="lead">Wählen Sie zwei bis vier Lösungen. Die Auswahl steht in der Adresse – so können Sie den Vergleich teilen.</p>
+    </div>
+    {{ mk("checkliste", "mk-kopf", schmuck=true) }}
+  </section>
+
+  <form class="vg-wahl" method="get" action="./" data-vergleich-form>
+    <fieldset>
+      <legend class="sr">Lösungen auswählen</legend>
+      {% for l in loesungen %}
+      <label class="chipwahl klein"><input type="checkbox" name="ids" value="{{ l.id }}"><span><b>{{ l.name }}</b><small>{{ l.seg.label }}</small></span></label>
+      {% endfor %}
+    </fieldset>
+    <div class="vg-optionen">
+      <label class="schalter"><input type="checkbox" data-nur-unterschiede><span>Nur Unterschiede zeigen</span></label>
+      <span class="muted klein" data-vg-info></span>
+      <button class="btn btn-p js-weg" type="submit">Vergleichen</button>
+    </div>
+  </form>
+
+  <div class="vg-leer" data-vg-leer hidden>
+    {{ mk("lupe", "mk-leer", schmuck=true) }}
+    <div><b>Noch nichts ausgewählt.</b><p>Wählen Sie oben mindestens zwei Lösungen – oder starten Sie im <a href="{{ url() }}">Berater</a>, der Ihnen passende Kandidaten vorschlägt.</p></div>
+  </div>
+
+  <div class="vg-tbl-wrap" data-vg-tabelle>
+    <table class="vg-tbl">
+      <thead>
+        <tr>
+          <th scope="col" class="vg-merkmal"><span class="sr">Merkmal</span></th>
+          {% for l in loesungen %}
+          <th scope="col" data-col="{{ l.id }}">
+            {{ seg(l) }}
+            <a href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer>{{ l.name }}</a>
+            <small>{{ l.anbieter }}</small>
+            <button type="button" class="vg-weg" data-entfernen="{{ l.id }}" aria-label="{{ l.name }} entfernen" hidden>{{ icon("x", 14) }}</button>
+          </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="vg-zusammen"><th scope="row">Im Standard enthalten</th>{% for l in loesungen %}<td data-col="{{ l.id }}"><b>{{ l.anzahl_voll }}</b> von 28 Bereichen</td>{% endfor %}</tr>
+        <tr class="vg-zusammen"><th scope="row">Kosten</th>{% for l in loesungen %}<td data-col="{{ l.id }}">{{ kosten(l) }}</td>{% endfor %}</tr>
+        {% for z in zeilen %}
+        {% if z.art == "kopf" %}
+        <tr class="vg-bereich"><th colspan="{{ loesungen|length + 1 }}">{{ icon(z.icon, 16) }} {{ z.titel }}</th></tr>
+        {% else %}
+        <tr data-zeile>
+          <th scope="row">{{ z.label }}{% if z.hilfe %}<small>{{ z.hilfe }}</small>{% endif %}</th>
+          {% for l in loesungen %}
+          {% if z.art == "modul" %}{% set w = l.module[z.key] %}
+          <td data-col="{{ l.id }}" data-v="{{ w.key }}">{{ sk(w) }}{% if w.zusatz %}<small>{{ w.zusatz }}</small>{% endif %}</td>
+          {% else %}{% set wert = l.raw[z.key] %}
+          <td data-col="{{ l.id }}" data-v="{{ wert }}" class="{% if wert.startswith('Prüfen') %}offen{% endif %}">{{ wert or "–" }}</td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

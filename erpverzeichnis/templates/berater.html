@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% from "_makros.html" import seg, abdruck, avatar, tonliste, kosten with context %}
+{% block title %}{% if schritt == 2 %}{{ seiten_titel }}{% else %}Welches ERP passt zu Ihrem Betrieb?{% endif %}{% endblock %}
+{% block description %}{% if schritt == 2 %}{{ seiten_text }}{% else %}{{ super() }}{% endif %}{% endblock %}
+{% block head %}{% if schritt == 1 %}<meta name="robots" content="noindex, follow">{% endif %}{% endblock %}
+{% block body_class %}seite-berater{% endblock %}
+
+{% macro karte(l, rolle=none, gruende=[]) -%}
+<article class="rec{% if rolle %} rolle-{{ rolle.rolle }}{% endif %}" data-id="{{ l.id }}">
+  <div class="rolle"><b data-rolle>{{ rolle.label if rolle else "" }}</b><span data-rolle-hilfe>{{ rolle.hilfe if rolle else "" }}</span></div>
+  <div class="top">
+    <div class="hd">{{ seg(l) }}<span class="an">{{ l.anbieter }}</span></div>
+    <h3>{{ l.name }}</h3>
+    <p class="gf">{{ l.raw.geeignet_fuer }}</p>
+    <div data-gruende>{{ tonliste(gruende) }}</div>
+  </div>
+  <div class="ft">
+    <dl class="ft-fakten">
+      <div><dt>Preis</dt><dd>{{ l.raw.preis_einstieg }}</dd></div>
+      <div><dt>Kosten</dt><dd>{{ kosten(l) }}</dd></div>
+      <div><dt>Betrieb</dt><dd>{{ l.betrieb_text }}</dd></div>
+    </dl>
+    <div class="ft-r">
+      {{ abdruck(l) }}
+      <a class="btn btn-g" href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer>Steckbrief {{ icon("arrow", 15) }}</a>
+    </div>
+  </div>
+</article>
+{%- endmacro %}
+
+{% block content %}
+<div class="vb-main">
+  {% if schritt == 0 %}
+  <section class="vb-hero">
+    <div class="vb-hero-tx">
+      <h1>Welches ERP passt zu Ihrem Betrieb?</h1>
+      <p class="lead">Vier Fragen, passende Lösungen – unabhängig und ohne Werbung.</p>
+      <p class="vb-meta">{{ daten_anzahl }} Lösungen · Stand {{ daten_stand|datum }}</p>
+    </div>
+    <div class="vb-hero-mk">
+      <div class="blase">Sälüü! Ich bin {{ MASKOTTCHEN }}.</div>
+      {{ mk("lupe", "mk-hero") }}
+    </div>
+  </section>
+  {% else %}
+  <section class="vb-welcome kompakt">
+    <h1>{% if schritt == 2 %}ERP für {{ b_info.label }} · {{ g_info.titel }}{% else %}Welches ERP passt zu Ihrem Betrieb?{% endif %}</h1>
+    <p class="vb-meta">{{ daten_anzahl }} Lösungen · unabhängig · Stand {{ daten_stand|datum }}</p>
+  </section>
+  {% endif %}
+
+  {# ---------- Frage 1: Grösse ---------- #}
+  <div class="msg{% if schritt == 0 %} neu{% endif %}" {% if schritt == 0 %}id="aktuell"{% endif %}>
+    {{ avatar() }}
+    <div class="bd">
+      <div class="prog" aria-label="Frage 1 von 4">{% for n in range(1, 5) %}<i class="{% if n <= 1 %}on{% endif %}"></i>{% endfor %}<span>Frage 1 von 4</span></div>
+      <h2 class="tx">Wie viele Mitarbeitende hat Ihr Betrieb?</h2>
+      {% if schritt == 0 %}
+      <div class="vb-opts g2">
+        {% for o in optionen %}
+        <a class="opt" href="{{ url(o.pfad) }}#aktuell"><span class="ic">{{ icon(o.icon) }}</span><span class="tt"><strong>{{ o.label }}</strong><small>{{ o.hilfe }}</small></span><span class="n">{{ o.anzahl }} {% if o.anzahl == 1 %}Lösung{% else %}Lösungen{% endif %}</span></a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if schritt >= 1 %}
+  <div class="msg user"><a class="bub" href="{{ url() }}#aktuell" title="Antwort ändern">{{ icon("users", 16) }}{{ g_info.titel }}<small>ändern</small></a></div>
+
+  {# ---------- Frage 2: Branche ---------- #}
+  <div class="msg{% if schritt == 1 %} neu{% endif %}" {% if schritt == 1 %}id="aktuell"{% endif %}>
+    {{ avatar() }}
+    <div class="bd">
+      <div class="prog" aria-label="Frage 2 von 4">{% for n in range(1, 5) %}<i class="{% if n <= 2 %}on{% endif %}"></i>{% endfor %}<span>Frage 2 von 4</span></div>
+      <h2 class="tx">In welcher Branche sind Sie tätig?</h2>
+      {% if schritt == 1 %}
+      <div class="vb-opts g2">
+        {% for o in optionen %}
+        <a class="opt" href="{{ url(o.pfad) }}#aktuell"><span class="ic">{{ icon(o.icon) }}</span><span class="tt"><strong>{{ o.label }}</strong><small>{{ o.hilfe }}</small></span><span class="n">{{ o.anzahl }}</span></a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if schritt == 2 %}
+  <div class="msg user"><a class="bub" href="{{ url(pfad.rsplit('/', 2)[0] ~ '/') }}#aktuell" title="Antwort ändern">{{ icon(b_info.icon, 16) }}{{ b_info.label }}<small>ändern</small></a></div>
+
+  <form class="vb-form" id="berater-form" method="get" action="./" data-berater>
+    {# ---------- Frage 3: Bereiche ---------- #}
+    <div class="msg neu" id="aktuell">
+      {{ avatar() }}
+      <div class="bd">
+        <div class="prog" aria-label="Frage 3 von 4">{% for n in range(1, 5) %}<i class="{% if n <= 3 %}on{% endif %}"></i>{% endfor %}<span>Frage 3 von 4</span></div>
+        <h2 class="tx">Was muss die Lösung können?<small>Mehrfachauswahl. Buchhaltung, Rechnungen und Offerten sind immer dabei.</small></h2>
+        <div class="vb-chips">
+          {% for b in bedarf %}
+          <label class="chipwahl"><input type="checkbox" name="modul" value="{{ b.key }}"><span>{{ icon(b.icon, 17) }}<b>{{ b.label }}</b><small>{{ b.hilfe }}</small></span></label>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {# ---------- Frage 4: Betrieb ---------- #}
+    <div class="msg">
+      {{ avatar() }}
+      <div class="bd">
+        <div class="prog" aria-label="Frage 4 von 4">{% for n in range(1, 5) %}<i class="on"></i>{% endfor %}<span>Frage 4 von 4</span></div>
+        <h2 class="tx">Wo soll die Software laufen?</h2>
+        <div class="vb-opts g3">
+          {% for wert, ic, label, hilfe in betrieb_optionen %}
+          <label class="opt opt-radio"><input type="radio" name="betrieb" value="{{ wert }}" {% if not wert %}checked{% endif %}><span class="ic">{{ icon(ic) }}</span><span class="tt"><strong>{{ label }}</strong><small>{{ hilfe }}</small></span></label>
+          {% endfor %}
+        </div>
+        <button class="btn btn-p js-weg" type="submit">Empfehlungen anzeigen</button>
+      </div>
+    </div>
+  </form>
+
+  {# ---------- Ergebnis ---------- #}
+  <div class="msg ergebnis" id="ergebnis">
+    {{ avatar() }}
+    <div class="bd" aria-live="polite">
+      <div class="erg-kopf">
+        <div>
+          <p class="tx" data-erg-text>
+            {% if not rollen %}Für diese Kombination habe ich noch keine passende Lösung gefunden.
+            {% else %}Für {{ b_info.label }} mit {{ g_info.mit }} passen <b>{{ pool|length }} {% if pool|length == 1 %}Lösung{% else %}Lösungen{% endif %}</b>. Statt einer Rangliste zeige ich Ihnen, wo Sie wählen müssen – zwischen Abdeckung und Kosten:{% endif %}
+          </p>
+          <p class="muted klein" data-erg-auswahl></p>
+        </div>
+        {{ mk("pokal", "mk-erg", schmuck=true) }}
+      </div>
+
+      <div class="vb-leer" data-leer {% if rollen %}hidden{% endif %}>
+        {{ mk("tablet", "mk-leer", schmuck=true) }}
+        <div>
+          <b>Hier finde ich nichts Passendes.</b>
+          <p>Entfernen Sie einen Bereich – oft schliesst ein einziges Modul viele Lösungen aus. Oder wählen Sie «Ist mir egal» beim Betrieb.</p>
+        </div>
+      </div>
+
+      <div class="vb-recs" data-recs>
+        {% for r in rollen %}{{ karte(r.t.l, r, r.gruende) }}{% endfor %}
+      </div>
+
+      <div class="vb-mehr" data-mehr {% if rollen|length < 2 %}hidden{% endif %}>
+        <a class="btn btn-g" data-vergleich-link href="{{ url('vergleich/') }}?ids={{ rollen|map(attribute='t')|map(attribute='l')|map(attribute='id')|join(',') }}">{{ icon("compare", 16) }} Diese Empfehlungen vergleichen</a>
+        <button class="btn btn-t" type="button" data-teilen hidden>{{ icon("share", 16) }} Link kopieren</button>
+      </div>
+
+      <details class="vb-alle" data-rest {% if not rest %}hidden{% endif %}>
+        <summary class="btn btn-t">Alle weiteren passenden Lösungen (<span data-rest-n>{{ rest|length }}</span>)</summary>
+        <div class="vb-list" data-rest-liste>
+          {% for t in rest %}<a href="{{ url('erp/' ~ t.l.id ~ '/') }}" data-drawer><span><span class="nm">{{ t.l.name }}</span><span class="an">{{ t.l.seg.label }} · {{ t.l.anbieter }}</span></span>{{ abdruck(t.l) }}</a>{% endfor %}
+        </div>
+      </details>
+
+      <div class="vb-tip"><b>{{ MASKOTTCHEN }}s Tipp:</b> Lassen Sie sich von zwei bis drei Anbietern eine Offerte mit Ihren echten Abläufen zeigen – und fragen Sie, was die Einführung und der Wechsel weg vom System kosten.</div>
+    </div>
+  </div>
+
+  {# Vorlagen für die Berechnung im Browser: eine Karte pro passender Lösung #}
+  <div hidden data-pool>
+    {% for l in pool %}{{ karte(l) }}{% endfor %}
+    <div data-rest-vorlage>{% for l in pool %}<a href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer data-id="{{ l.id }}"><span><span class="nm">{{ l.name }}</span><span class="an">{{ l.seg.label }} · {{ l.anbieter }}</span></span>{{ abdruck(l) }}</a>{% endfor %}</div>
+  </div>
+  {% endif %}
+</div>
+
+<form class="vb-comp" action="{{ url('verzeichnis/') }}" method="get" role="search">
+  <div class="vb-comp-in">
+    <div class="vb-sugg" id="vb-sugg" hidden></div>
+    <div class="vb-box">
+      <label class="sr" for="vb-q">Lösung suchen</label>
+      <input id="vb-q" name="q" placeholder="Lösung suchen, z.B. «bexio»" autocomplete="off">
+      <button class="send" type="submit" aria-label="Suchen">{{ icon("search", 18) }}</button>
+    </div>
+    <div class="vb-note">Redaktionelle Einschätzung, keine Kaufberatung · Datenstand {{ daten_stand|datum }} · <a href="{{ url('ueber/') }}">Über das Projekt</a></div>
+  </div>
+</form>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block scripts %}{% if schritt == 2 %}{{ js|json_script("berater-daten") }}{% endif %}{% endblock %}

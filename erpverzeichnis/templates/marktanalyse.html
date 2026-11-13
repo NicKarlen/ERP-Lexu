@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Marktanalyse{% endblock %}
+{% block description %}Marktanalyse ERP Schweiz: Segmente, Preise, Schweiz-Pflichten, Modul-Abdeckung, Datenschutz und KI im ERP.{% endblock %}
+{% block content %}
+<div class="wrap analyse-layout">
+  <aside class="toc">
+    {{ mk("wachstum", "mk-toc", schmuck=true) }}
+    <p class="eyebrow">Inhalt</p>
+    <ul>
+      {% for id, titel in toc %}<li><a href="#{{ id }}">{{ titel|safe }}</a></li>{% endfor %}
+    </ul>
+  </aside>
+  <article class="prosa analyse">
+    <p class="eyebrow">Marktanalyse · Stand {{ daten_stand|datum }}</p>
+    <h1>{{ titel }}</h1>
+    {{ inhalt }}
+  </article>
+</div>
+{% endblock %}

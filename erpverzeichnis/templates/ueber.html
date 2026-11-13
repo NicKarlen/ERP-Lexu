@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Über das Projekt{% endblock %}
+{% block description %}Was das ERP-Verzeichnis ist, wie die Lösungen eingeordnet werden, wie vollständig die Daten sind – und wie Sie Fehler melden können.{% endblock %}
+{% block content %}
+<div class="wrap narrow prosa">
+  <section class="seiten-hero">
+    <div>
+      <p class="eyebrow">Über das Projekt</p>
+      <h1>Ein unabhängiger Wegweiser, kein Verkaufsportal</h1>
+      <p class="lead">Das ERP-Verzeichnis beantwortet eine Frage: Welches ERP deckt ab, was mein Betrieb braucht – und was kostet es ungefähr?</p>
+    </div>
+    {{ mk("pokal", "mk-hero-s") }}
+  </section>
+
+  {% if daten_status %}
+  <div class="hinweis-box"><b>Aktueller Stand:</b> {{ daten_status }}</div>
+  {% endif %}
+
+  <section>
+    <h2>Wer steht dahinter?</h2>
+    <ul>
+      <li>Ein unabhängiges Projekt. Kein Anbieter bezahlt für die Aufnahme, die Reihenfolge oder eine Empfehlung.</li>
+      <li>Es gibt keine Rangliste «bestes ERP». Empfehlungen beziehen sich immer auf Ihre Antworten im Berater und sind begründet.</li>
+      <li>Quellcode und alle Daten sind öffentlich{% if repo_url %} auf <a href="{{ repo_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}. Jede Änderung ist nachvollziehbar.</li>
+      <li>{{ MASKOTTCHEN }}, der Waschbär, begleitet Sie durch die Seite. Er ist neugierig, gründlich – und glaubt keinem Marketing-Prospekt ungeprüft.</li>
+    </ul>
+  </section>
+
+  <section class="tresor tresor-prosa">
+    <div class="tresor-kopf">
+      {{ mk_sec("zone", "mk-tresor") }}
+      <div>
+        <p class="eyebrow">Ihre Privatsphäre</p>
+        <h2>Keine Werbung, kein Tracking</h2>
+        <p>Die Website setzt keine Cookies, zählt keine Besuche und lädt keine Schriften oder Skripte von Dritten. Ihre Antworten im Berater stehen nur in der Adresszeile Ihres Browsers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Wie eingeordnet wird</h2>
+    <p>Jede Lösung erhält einen Steckbrief mit Modul-Matrix (28 Bereiche), Schweiz-Funktionen, Betrieb, Preis, Einführungsaufwand und Datenschutz. Grundlage sind öffentliche Angaben – in dieser Reihenfolge: Zertifizierungslisten (z.B. Swissdec), Produktdokumentation und Preisseiten der Anbieter, Unterlagen von Partnern, Fachartikel. Bewertungsportale dienen nur zum Finden, nie als Beleg.</p>
+    <p>Marketingaussagen lesen wir kritisch: Im Zweifel steht «Rudimentär» oder «noch offen», nie eine Aufwertung. Funktionen beschreiben wir in eigenen Worten. <a href="{{ url('grundlagen/') }}#skala">Mehr zur Skala</a></p>
+  </section>
+
+  <section>
+    <h2>Wie vollständig sind die Daten?</h2>
+    <p><strong>{{ daten_geprueft }} von {{ daten_anzahl }} Lösungen</strong> sind vollständig belegt. Insgesamt sind <strong>{{ daten_offen }} Angaben</strong> öffentlich noch nicht belegt – im Steckbrief mit <span class="chip chip-o">noch offen</span> markiert. Fragen Sie diese Punkte vor einem Entscheid beim Anbieter nach.</p>
+    <p>Datenstand: {{ daten_stand|datum }}. Jeder Eintrag wird spätestens alle 90 Tage überprüft.</p>
+  </section>
+
+  <section id="fehler">
+    <h2>Fehler gefunden?</h2>
+    <p>Eine Angabe ist falsch, veraltet oder eine Lösung fehlt? Melden Sie es – Anbieter sind ausdrücklich willkommen. Am besten mit einer Quelle (Produktseite, Preisliste, Zertifikat).</p>
+    {% if repo_url %}
+    <p><a class="btn btn-p" href="{{ repo_url }}/issues/new?template=fehler-melden.yml" target="_blank" rel="noopener">{{ icon("github", 16) }} Fehler auf GitHub melden</a></p>
+    <p class="muted klein">Dafür braucht es ein kostenloses GitHub-Konto. Meldungen sind öffentlich sichtbar.</p>
+    {% else %}
+    <p class="muted">Fehler können als Issue im GitHub-Repository gemeldet werden. (Der Link erscheint, sobald das Repository auf GitHub verbunden ist.)</p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h2>Weiterverwenden und teilen</h2>
+    <p>Texte und Daten stehen unter der Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener">CC BY 4.0</a>: Sie dürfen sie frei teilen und weiterverwenden – auch kommerziell –, solange Sie die Quelle nennen, z.B. «Quelle: ERP-Verzeichnis»{% if site_url %} mit Link auf {{ site_url }}{% endif %}. Der Code steht unter MIT-Lizenz.</p>
+  </section>
+
+  <section class="cta-box">
+    {{ mk("laptop", "mk-cta", schmuck=true) }}
+    <div>
+      <h2>Keine Kaufberatung</h2>
+      <p>{{ daten_hinweis }}</p>
+      <a class="btn btn-p" href="{{ url() }}">Zum Berater</a>
+    </div>
+  </section>
+</div>
+{% endblock %}

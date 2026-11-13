@@ -1,0 +1,125 @@
+{% from "_makros.html" import seg, sk, abdruck, tonliste, kosten with context %}
+<article class="det">
+  <header class="det-kopf">
+    {{ seg(l) }}
+    <h1>{{ l.name }}</h1>
+    <div class="det-anb">{{ l.anbieter }} · {{ l.raw.hq_land }}{% if l.pruefpunkte %}<span class="chip chip-o">{{ l.pruefpunkte }} Angaben noch offen</span>{% endif %}</div>
+    <p class="det-lead">{{ l.raw.geeignet_fuer }}</p>
+  </header>
+
+  <section class="det-kurz">
+    <div class="det-kurz-l">
+      <h2>Kurz gesagt</h2>
+      {{ tonliste(l.kurz_gesagt) }}
+    </div>
+    <div class="det-meter" aria-label="Abdeckung der Module">
+      <div class="ring" style="--p: {{ l.abdeckung_prozent }}"><b>{{ l.anzahl_voll }}</b><span>von 28</span></div>
+      <p>Bereiche im Standard</p>
+      {{ abdruck(l, true) }}
+    </div>
+  </section>
+
+  {% if l.raw.hinweise_fallstricke %}
+  <section class="det-achtung">
+    {{ mk("tablet", "mk-tipp", schmuck=true) }}
+    <div>
+      <h2>Darauf sollten Sie achten</h2>
+      <p>{{ l.raw.hinweise_fallstricke }}</p>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="det-fakten">
+    {% for f in l.fakten %}
+    <div class="fk{% if f.offen %} offen{% endif %}"><span>{{ f.titel }}</span><b>{{ f.wert or "–" }}</b></div>
+    {% endfor %}
+    <div class="fk"><span>Kostenstufe</span><b>{{ kosten(l) }}</b></div>
+    <div class="fk"><span>Einführungsaufwand</span><b>{{ l.aufwand.label if l.aufwand else "noch offen" }}</b></div>
+  </section>
+
+  <section>
+    <div class="det-h">
+      <h2>Was ist enthalten?</h2>
+      <div class="det-legende">{% for k in ("voll", "modul", "partner", "basis", "nein", "pruefen") %}{{ sk(skala[k]) }}{% endfor %}</div>
+    </div>
+    <div class="matrix">
+      {% for b in bereiche %}
+      <div class="mx-bereich">
+        <h3>{{ icon(b.icon, 17) }} {{ b.titel }} <small>{{ b.voll }}/{{ b.zeilen|length }} im Standard</small></h3>
+        <dl>
+          {% for z in b.zeilen %}
+          <div class="mx-row"><dt>{{ z.label }}<small>{{ z.hilfe }}</small></dt><dd>{{ sk(z.wert) }}{% if z.wert.zusatz %}<small>{{ z.wert.zusatz }}</small>{% endif %}</dd></div>
+          {% endfor %}
+        </dl>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <h2>{{ icon("ch", 20) }} Schweiz-Tauglichkeit</h2>
+    <div class="ch-grid">
+      {% for s in l.schweiz %}
+      <div class="ch-kachel ch-{{ s.jn }}">
+        <span class="ch-st" aria-hidden="true">{{ zeichen(s.jn) }}</span>
+        <div><b>{{ s.label }}</b><span>{{ s.wert or "–" }}</span></div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="tresor">
+    <div class="tresor-kopf">
+      {{ mk_sec("schild", "mk-tresor") }}
+      <div>
+        <p class="eyebrow">Datenschutz & Datenhoheit</p>
+        <h2>Wo liegen Ihre Firmendaten?</h2>
+        <p>Im ERP stecken Löhne, Kundendaten und die ganze Buchhaltung. Darum gehört der Datenort genauso zur Auswahl wie die Funktionen.</p>
+      </div>
+    </div>
+    {% for g in gruppen if g.id == "datenschutz" %}
+    <dl class="tresor-liste">
+      {% for z in g.zeilen %}
+      <div><dt>{{ z.label }}<small>{{ z.hilfe }}</small></dt><dd>{% if z.offen %}<span class="chip chip-dunkel">noch offen</span> {% endif %}{{ z.wert }}</dd></div>
+      {% endfor %}
+    </dl>
+    {% endfor %}
+  </section>
+
+  {% if l.raw.staerken %}
+  <section class="det-staerken">
+    <h2>Stärken</h2>
+    <p>{{ l.raw.staerken }}</p>
+  </section>
+  {% endif %}
+
+  <section>
+    <div class="det-h">
+      <h2>Alle Details</h2>
+      <button type="button" class="btn btn-t btn-klein" data-toggle-all>Alle aufklappen</button>
+    </div>
+    {% for g in gruppen if g.id != "datenschutz" and g.zeilen %}
+    <details class="acc">
+      <summary><span>{{ g.titel }}</span>{% if g.offen_anzahl %}<span class="chip chip-o">{{ g.offen_anzahl }} offen</span>{% endif %}</summary>
+      <dl>
+        {% for z in g.zeilen %}
+        <div class="row"><dt>{{ z.label }}<small>{{ z.hilfe }}</small></dt><dd>{% if z.offen %}<span class="chip chip-o">noch offen</span> {% endif %}{% if z.key == "website" %}<a href="{{ z.wert }}" target="_blank" rel="noopener">{{ z.wert|domain }}</a>{% else %}{{ z.wert }}{% endif %}</dd></div>
+        {% endfor %}
+      </dl>
+    </details>
+    {% endfor %}
+    <details class="acc">
+      <summary><span>Quellen &amp; Aktualität</span></summary>
+      <ul class="q">
+        {% for q in l.quellen %}<li><a href="{{ q }}" target="_blank" rel="noopener">{{ q|domain }}</a><small>{{ q }}</small></li>
+        {% else %}<li class="muted">Keine Quellen erfasst.</li>{% endfor %}
+      </ul>
+      <p class="muted klein acc-fuss">Geprüft am {{ l.raw.stand|datum }} · {{ l.pruefpunkte }} offene{% if l.pruefpunkte == 1 %}r{% endif %} Prüfpunkt{% if l.pruefpunkte != 1 %}e{% endif %}. Angaben mit «noch offen» sind öffentlich nicht belegt und sollten vor einem Entscheid beim Anbieter bestätigt werden.</p>
+    </details>
+    <div class="det-aktionen">
+      <a class="btn btn-g" href="{{ url('vergleich/') }}?ids={{ l.id }}">{{ icon("compare", 16) }} Mit anderen vergleichen</a>
+      {% if repo_url %}<a class="btn btn-t" href="{{ repo_url }}/issues/new?template=fehler-melden.yml&amp;loesung={{ l.id|urlencode }}&amp;title={{ ('Fehler: ' ~ l.name)|urlencode }}" target="_blank" rel="noopener">Fehler melden</a>{% endif %}
+    </div>
+    <p class="muted klein det-melden">Angabe falsch oder veraltet? Melden Sie es{% if not repo_url %} über die Seite <a href="{{ url('ueber/') }}#fehler">Über das Projekt</a>{% endif %} – auch Anbieter sind willkommen.</p>
+  </section>
+</article>

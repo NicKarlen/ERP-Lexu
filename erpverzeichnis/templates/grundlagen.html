@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% from "_makros.html" import sk with context %}
+{% block title %}Grundlagen: ERP verständlich erklärt{% endblock %}
+{% block description %}Was ist ein ERP, wann reicht eine Buchhaltung, was bedeuten Swissdec, QR-Rechnung, eBill, camt und GeBüV – und wie gehen Sie bei der Auswahl vor?{% endblock %}
+{% block content %}
+<div class="wrap narrow prosa">
+  <section class="seiten-hero">
+    <div>
+      <p class="eyebrow">Grundlagen</p>
+      <h1>ERP verständlich erklärt</h1>
+      <p class="lead">Was ein ERP ist, welche Schweizer Eigenheiten es beherrschen muss und wie Sie die Angaben in diesem Verzeichnis lesen.</p>
+    </div>
+    {{ mk("tablet", "mk-hero-s") }}
+  </section>
+
+  <section id="was-ist-erp">
+    <h2>Was ist ein ERP?</h2>
+    <p>ERP steht für <em>Enterprise Resource Planning</em>. Gemeint ist eine Software, in der die wichtigsten Abläufe eines Betriebs zusammenlaufen: Buchhaltung, Offerten und Rechnungen, Einkauf und Lager, Löhne, Projekte, bei Produktionsbetrieben auch die Fertigung. Der Vorteil: Jede Information wird nur einmal erfasst. Eine Lieferung bucht sich ins Lager, die Rechnung in die Debitoren, die Zahlung in die Buchhaltung.</p>
+    <p>Für Kleinstbetriebe reicht oft eine <strong>Buchhaltungslösung</strong> mit Rechnungen und Lohn. Sobald Lager, Projekte oder mehrere Standorte dazukommen, lohnt sich ein ERP. Darum führt das Verzeichnis beide.</p>
+    <div class="segment-liste">
+      {% for name, s in segmente.items() %}
+      <div class="seg-karte"><span class="seg seg-{{ s.id }}"><span class="si">{{ icon(s.icon, 14) }}</span>{{ s.label }}</span><p>{{ s.text }}</p></div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="skala">
+    <h2>So lesen Sie die Modul-Matrix</h2>
+    <p>Für jede Lösung zeigen wir in 28 Bereichen, ob sie im Standard enthalten sind. Die Einordnung ist bewusst vorsichtig: Wenn ein Anbieter «Lager» verspricht, aber nur eine Artikelliste meint, steht dort «Rudimentär». Im Zweifel werten wir nie auf.</p>
+    <ul class="skala-erklaerung">
+      {% for k in ("voll", "modul", "partner", "basis", "nein", "pruefen") %}
+      <li>{{ sk(skala[k]) }}<span>{{ skala[k].erklaerung }}</span></li>
+      {% endfor %}
+    </ul>
+    <p>Im Verzeichnis und im Berater fassen sieben Punkte die wichtigsten Bereiche zusammen: Lohn, Lager, Produktion, Projekte & Zeit, CRM, Webshop und mehrere Firmen.</p>
+  </section>
+
+  <section id="schweiz">
+    <h2>Was eine Schweizer Lösung können muss</h2>
+    <p>Ausländische Software deckt die Schweizer Pflichten oft nur teilweise ab. Diese Punkte prüfen wir bei jeder Lösung:</p>
+    <dl class="glossar">
+      {% for key, label, hilfe in schweiz %}
+      <div><dt>{{ label }}</dt><dd>{{ hilfe }}</dd></div>
+      {% endfor %}
+    </dl>
+  </section>
+
+  <section id="kosten">
+    <h2>Kosten und Einführungsaufwand</h2>
+    <p>Preise für ERP sind schwer vergleichbar: Lizenz, Abo, Module, Nutzer, Hosting und Einführung werden unterschiedlich gerechnet. Wo ein Einstiegspreis öffentlich ist, nennen wir ihn mit Bezugsgrösse. Zusätzlich ordnen wir grob ein:</p>
+    <div class="zwei-spalten">
+      <div class="info-karte">
+        <h3>Laufende Kosten</h3>
+        <dl>{% for k, x in kosten.items() %}<div><dt>{{ x.label }}</dt><dd>{{ x.text }}</dd></div>{% endfor %}</dl>
+      </div>
+      <div class="info-karte">
+        <h3>Einführungsaufwand</h3>
+        <dl>{% for k, x in aufwand.items() %}<div><dt>{{ x.label }}</dt><dd>{{ x.text }}</dd></div>{% endfor %}</dl>
+      </div>
+    </div>
+    <p class="muted klein">Die Stufen sind Richtwerte der Redaktion, keine Offerten. Massgeblich ist immer das Angebot des Anbieters.</p>
+  </section>
+
+  <section class="tresor tresor-prosa" id="datenschutz">
+    <div class="tresor-kopf">
+      {{ mk_sec("dokument", "mk-tresor") }}
+      <div>
+        <p class="eyebrow">Datenschutz</p>
+        <h2>Im ERP liegt Ihr ganzer Betrieb</h2>
+        <p>Löhne, Kundendaten, Konditionen: Fragen Sie vor dem Entscheid nach diesen fünf Punkten.</p>
+      </div>
+    </div>
+    <ol class="tresor-punkte">
+      <li><b>Datenort</b> – In welchem Land, in welchem Rechenzentrum? Bei Partner-Hosting zählt der Partner.</li>
+      <li><b>Jurisdiktion</b> – Gehört der Anbieter oder sein Hoster zu einem US-Konzern, können US-Behörden über den CLOUD Act Zugriff verlangen, auch auf Daten in Europa.</li>
+      <li><b>Auftragsverarbeitung (AVV)</b> – Pflicht, sobald der Anbieter Personendaten für Sie bearbeitet (Art. 9 DSG).</li>
+      <li><b>Datenexport</b> – Kommen Sie bei einem Wechsel mit allen Daten heraus, in welchem Format und zu welchem Preis?</li>
+      <li><b>KI-Funktionen</b> – Welche Daten gehen an welches KI-Modell, und wo läuft es?</li>
+    </ol>
+  </section>
+
+  <section id="vorgehen">
+    <h2>So gehen Sie bei der Auswahl vor</h2>
+    <ol class="regel-liste">
+      <li><h3>Abläufe aufschreiben</h3><p>Was muss die Software heute und in drei Jahren können? Welche Bereiche sind Pflicht, welche nett?</p></li>
+      <li><h3>Vorauswahl treffen</h3><p>Mit dem <a href="{{ url() }}">Berater</a> und dem <a href="{{ url('verzeichnis/') }}">Verzeichnis</a> drei bis fünf Kandidaten finden. Auf «Partner» und «noch offen» achten.</p></li>
+      <li><h3>Treuhand einbeziehen</h3><p>Ihre Treuhänderin arbeitet vielleicht schon mit einer Lösung – das spart Schnittstellen und Kosten.</p></li>
+      <li><h3>Demo mit echten Fällen</h3><p>Lassen Sie sich Ihre eigenen Abläufe zeigen, nicht die Standard-Präsentation.</p></li>
+      <li><h3>Gesamtkosten vergleichen</h3><p>Abo oder Lizenz, Module, Nutzer, Hosting, Einführung, Schulung – über fünf Jahre gerechnet.</p></li>
+      <li><h3>Ausstieg klären</h3><p>Vertragslaufzeit, Kündigungsfrist und Datenexport schriftlich festhalten, bevor Sie unterschreiben.</p></li>
+    </ol>
+  </section>
+
+  <section id="glossar">
+    <h2>Begriffe</h2>
+    <dl class="glossar">
+      <div><dt>Mandant</dt><dd>Eine Firma im System. «Mehrmandantenfähig» heisst: mehrere Firmen in derselben Software, z.B. eine Holding mit Tochtergesellschaften.</dd></div>
+      <div><dt>Konsolidierung</dt><dd>Die Zahlen mehrerer Firmen zu einem Konzernabschluss zusammenfassen.</dd></div>
+      <div><dt>Swissdec / ELM</dt><dd>Swissdec ist der Schweizer Standard für die elektronische Lohnmeldung (ELM). Eine zertifizierte Lohnsoftware übermittelt Löhne direkt an AHV-Ausgleichskasse, Unfall- und Krankentaggeldversicherer, Steuerämter (Quellensteuer) und das Bundesamt für Statistik.</dd></div>
+      <div><dt>QR-Rechnung</dt><dd>Der Schweizer Einzahlungsschein mit Swiss QR Code, der die früheren roten und orangen Einzahlungsscheine abgelöst hat.</dd></div>
+      <div><dt>eBill</dt><dd>Die Rechnung landet direkt im E-Banking der Kundin und kann dort mit einem Klick freigegeben werden.</dd></div>
+      <div><dt>pain.001</dt><dd>Dateiformat nach ISO 20022, mit dem die Software Zahlungsaufträge an die Bank übergibt.</dd></div>
+      <div><dt>camt.053 / camt.054</dt><dd>Kontoauszug (053) und Gutschriftsanzeigen (054) im Format ISO 20022. Damit verbucht die Software Zahlungseingänge automatisch.</dd></div>
+      <div><dt>EBICS / bLink</dt><dd>Wege, Software direkt mit der Bank zu verbinden: EBICS ist ein Bankenstandard für Dateiaustausch, bLink eine Plattform von SIX für den Datenaustausch zwischen Banken und Software.</dd></div>
+      <div><dt>GeBüV</dt><dd>Geschäftsbücherverordnung: regelt, wie Geschäftsbücher und Belege elektronisch aufbewahrt werden müssen (unveränderbar, 10 Jahre).</dd></div>
+      <div><dt>Saldosteuersatz</dt><dd>Vereinfachte MWST-Abrechnung für kleinere Unternehmen: Die Steuer wird mit einem Pauschalsatz auf dem Umsatz berechnet.</dd></div>
+      <div><dt>Swiss GAAP FER / IFRS</dt><dd>Rechnungslegungsstandards, die über das Obligationenrecht (OR) hinausgehen – FER für mittelgrosse Schweizer Organisationen, IFRS international.</dd></div>
+      <div><dt>Cloud / Hosted / On-Prem</dt><dd>Cloud: Der Anbieter betreibt die Software, Sie nutzen sie im Browser. Hosted: Ein Partner betreibt die Software für Sie in seinem Rechenzentrum. On-Prem: Die Software läuft auf Ihrem eigenen Server.</dd></div>
+      <div><dt>PPS</dt><dd>Produktionsplanung und -steuerung: Fertigungsaufträge, Kapazitäten, Material.</dd></div>
+      <div><dt>AVV</dt><dd>Auftragsverarbeitungsvertrag – regelt, wie ein Dienstleister Personendaten in Ihrem Auftrag bearbeiten darf.</dd></div>
+      <div><dt>US CLOUD Act</dt><dd>US-Gesetz, das US-Unternehmen verpflichten kann, Daten an US-Behörden herauszugeben – auch wenn diese in Europa gespeichert sind.</dd></div>
+    </dl>
+  </section>
+</div>
+{% endblock %}

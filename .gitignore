@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+_site/
+.env
+
+
+# Interne Unterlagen (Briefing, Longlist, Maskottchen-Bögen) – nicht veröffentlichen
+docs/

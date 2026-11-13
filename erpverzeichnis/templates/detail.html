@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "_makros.html" import seg, abdruck with context %}
+{% block title %}{{ l.name }}{% endblock %}
+{% block description %}{{ l.name }} ({{ l.anbieter }}): {{ l.seg.label }} für {{ l.groessen_text }}. {{ l.anzahl_voll }} von 28 Bereichen im Standard, Betrieb: {{ l.betrieb_text }}. Steckbrief mit Quellen.{% endblock %}
+{% block content %}
+<div class="wrap lese">
+  <a class="zurueck" href="{{ url('verzeichnis/') }}" data-back>← Zurück</a>
+  {% include "_steckbrief.html" %}
+
+  {% if aehnlich %}
+  <section class="aehnlich">
+    <h2>Ähnliche Lösungen</h2>
+    <ul class="mini">
+      {% for x in aehnlich %}
+      <li><a href="{{ url('erp/' ~ x.id ~ '/') }}">
+        {{ seg(x) }}
+        <strong>{{ x.name }}</strong>
+        <span class="muted klein">{{ x.anbieter }} · {{ x.groessen_text }}</span>
+        {{ abdruck(x) }}
+      </a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}
