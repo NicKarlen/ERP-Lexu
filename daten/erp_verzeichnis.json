@@ -2748,7 +2748,7 @@
       "swissdec": "Ja (Winbiz, ELM 5.3*, 5.1*, 5.0; * selbstvalidiert)",
       "mwst_ch": "Ja (MWST-Abrechnungen; elektronische Übermittlung an die ESTV nicht belegt)",
       "qr_rechnung": "Prüfen – nur QR-Scan in der App belegt; Erstellung von QR-Rechnungen nicht eingesehen",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 8.0.22.55, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – elektronische Zahlungsdateien erwähnt, Format nicht belegt",
       "bankanbindung": "Prüfen – «E-Banking-Integration» erwähnt, Art der Anbindung (Datei, EBICS, bLink) nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -2772,9 +2772,9 @@
       "staerken": "Breites Paket zum Pauschalpreis: Buchhaltung, Verkauf, Einkauf, Lager, Swissdec-Lohn, Projekte und Kasse in einem Abo, viersprachig und in der Schweiz gehostet.",
       "hinweise_fallstricke": "Winbiz Cloud ist eine über Citrix bereitgestellte Windows-Anwendung, keine Web-App – eine stabile Internetverbindung ist nötig, und mobil ist das Arbeiten eingeschränkt. Der beworbene Preis von CHF 64 ist ein Neukunden-Angebot mit 12 Monaten Bindung; Winbiz Local kostet CHF 84 pro Monat und ist auf einen Arbeitsplatz beschränkt. Das Abo verlängert sich jährlich und muss 3 Monate vor Ablauf schriftlich gekündigt werden. eBill, Bankanbindung und Schnittstellen sind auf der Website nicht dokumentiert – vor dem Entscheid schriftlich bestätigen lassen.",
       "geeignet_fuer": "Kleine Handels-, Gewerbe- und Dienstleistungsbetriebe, vor allem in der Romandie, die Buchhaltung, Lager, Lohn und Kasse aus einer Hand wollen.",
-      "quellen": "https://www.winbiz.ch/fr/ | https://www.winbiz.ch/fr/produit/ | https://www.winbiz.ch/de/produkt/die-packung-bestellen/ | https://www.winbiz.ch/fr/winbiz-local/ | https://www.winbiz.ch/de/terms-and-conditions/ | https://www.swissmadesoftware.org/en/companies/winbiz/home.html | https://www.swissdec.ch/certified-erp/",
+      "quellen": "https://www.winbiz.ch/fr/ | https://www.winbiz.ch/fr/produit/ | https://www.winbiz.ch/de/produkt/die-packung-bestellen/ | https://www.winbiz.ch/fr/winbiz-local/ | https://www.winbiz.ch/de/terms-and-conditions/ | https://www.swissmadesoftware.org/en/companies/winbiz/home.html | https://www.swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 23
+      "anzahl_pruefpunkte": 22
     },
     {
       "id": "topal-topal",
@@ -3103,7 +3103,7 @@
       "swissdec": "Ja (SelectLine Lohn, ELM 5.0; ELM 5.1 und 5.3 selbstvalidiert)",
       "mwst_ch": "Ja (vereinnahmt, vereinbart, effektiv oder pauschal)",
       "qr_rechnung": "Ja (QR-Rechnung aus Belegen, QR-Belegerfassung)",
-      "ebill": "Prüfen – nicht belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 16.4; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – Zahlungsläufe vorhanden, ISO-20022-Formate nicht ausdrücklich belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Modul (Doqio-Archiv; GeBüV-Konformität nicht belegt)",
@@ -3127,9 +3127,9 @@
       "staerken": "Breit eingesetzte, modulare Schweizer KMU-Software mit Auftrag, Lager, Produktion, Fibu und Swissdec-Lohn, öffentlicher Preisliste und grossem Partnernetz.",
       "hinweise_fallstricke": "Der Mindestpreis von CHF 99 pro Monat gilt nur für die ERP-Module; Fibu, Lohn, Archiv, zusätzliche Mandanten und die SQL-Lizenz kommen dazu – rechnen Sie das Gesamtpaket pro Benutzer durch. Bei Zahlungsverzug kann SelectLine den Zugang sperren (Reaktivierung CHF 100). Cloud gibt es nur über Partner-Rechenzentren: Standort und Preis je Partner klären. eBill und Bankanbindung sind nicht belegt. Seit 2026 gehört auch europa3000 zur SelectLine Group.",
       "geeignet_fuer": "Kleine und mittlere Handels-, Produktions- und Dienstleistungsbetriebe, die eine bewährte Windows-Gesamtlösung mit Partnerbetreuung suchen.",
-      "quellen": "https://swissdec.ch/certified-erp/ | https://www.selectline.ch | https://www.selectline.ch/de/erp-software/erp/ | https://www.selectline.ch/de/erp-software/fibu/ | https://www.selectline.ch/de/module/ | https://www.selectline.ch/de/private-cloud/ | https://gadola.com/userobjects/75_0_2305_Preisliste_SelectLine_neo.pdf | https://www.selectline-group.com",
+      "quellen": "https://swissdec.ch/certified-erp/ | https://www.selectline.ch | https://www.selectline.ch/de/erp-software/erp/ | https://www.selectline.ch/de/erp-software/fibu/ | https://www.selectline.ch/de/module/ | https://www.selectline.ch/de/private-cloud/ | https://gadola.com/userobjects/75_0_2305_Preisliste_SelectLine_neo.pdf | https://www.selectline-group.com | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 13
+      "anzahl_pruefpunkte": 12
     },
     {
       "id": "informaticon-a3",
@@ -3245,7 +3245,7 @@
       "swissdec": "Ja (europa3000, ELM 5.0; ELM 5.1 und 5.3 selbstvalidiert)",
       "mwst_ch": "Prüfen – nicht belegt",
       "qr_rechnung": "Prüfen – Einzahlungsscheine genannt, QR-Rechnung nicht ausdrücklich belegt",
-      "ebill": "Prüfen – E-Rechnungen und Paynet genannt, eBill nicht ausdrücklich belegt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 10, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Teilweise (Debitoren laut Anbieter ISO-20022-fähig; Kreditorenzahlungen prüfen)",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Partner (DMS DOCUframe; GeBüV-Konformität nicht belegt)",
@@ -3269,9 +3269,9 @@
       "staerken": "Langjährige Schweizer KMU-Lösung mit Fibu, Swissdec-Lohn, Auftrag, Lager, Abo-Verwaltung und PPS sowie Schweizer Hosting-Variante (ERPaaS).",
       "hinweise_fallstricke": "europa3000 ist ein kleines Team (11 Mitarbeitende) und gehört seit Januar 2026 zur SelectLine Group: fragen Sie nach der Produkt-Roadmap. Preise sind nicht veröffentlicht; bei ERPaaS kommen Providergebühr und Update-Abo dazu. Die Website nennt noch alte Zahlungsverfahren (DTA, EZAG) – lassen Sie sich QR-Rechnung, eBill und ISO-20022-Zahlungen für Kreditoren konkret zeigen. Zeiterfassung, Archiv und Webshop kommen von Partnern.",
       "geeignet_fuer": "Kleine und mittlere Handels-, Produktions- und Dienstleistungsbetriebe sowie NPO, die eine Schweizer Gesamtlösung lokal oder gehostet in der Schweiz betreiben wollen.",
-      "quellen": "https://swissdec.ch/certified-erp/ | https://www.europa3000.ch | https://www.europa3000.ch/europa3000-neo/ | https://www.europa3000.ch/software-as-a-service/ | https://www.europa3000.ch/software-fuer-produktion/ | https://www.europa3000.ch/schnittstellen/ | https://www.europa3000.ch/ueber-uns/",
+      "quellen": "https://swissdec.ch/certified-erp/ | https://www.europa3000.ch | https://www.europa3000.ch/europa3000-neo/ | https://www.europa3000.ch/software-as-a-service/ | https://www.europa3000.ch/software-fuer-produktion/ | https://www.europa3000.ch/schnittstellen/ | https://www.europa3000.ch/ueber-uns/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 16
+      "anzahl_pruefpunkte": 15
     },
     {
       "id": "schneider-winbau",
@@ -4168,7 +4168,7 @@
       "swissdec": "Ja (HISoft, ELM 5.0)",
       "mwst_ch": "Ja (automatisierte MWST-Abrechnung mit Kontrollauswertungen laut Anbieter)",
       "qr_rechnung": "Prüfen – Einzahlungsscheine und QR-basierte Belegzuordnung erwähnt, QR-Rechnung nicht ausdrücklich",
-      "ebill": "Prüfen – Modul eRechnungen für Privatpersonen (Ersatz für LSV) belegt, eBill nicht ausdrücklich genannt",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste (HISoft eGov ab 1.0); eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Teilweise (Import camt.053/camt.054 belegt; Zahlungsausgang pain.001 prüfen)",
       "bankanbindung": "Prüfen – Dateiimport belegt, direkte Bankanbindung nicht",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -4192,9 +4192,9 @@
       "staerken": "Gemeinde-Gesamtlösung aus einer Hand mit Finanzen, Lohn, Steuerbezug, Einwohnerdiensten, Werken, Friedhof und Schule, in der Schweiz entwickelt und gehostet.",
       "hinweise_fallstricke": "HISoft ist eine reine Lösung für Gemeinden und öffentliche Verwaltungen – Finanzen, Lohn, Steuerbezug, Einwohner und Werke kommen vom gleichen kleinen Anbieter, für Firmen ist sie nicht gedacht. Preise und Referenzen sind nicht öffentlich. Eine neue, browserbasierte Generation ist angekündigt, ein Termin aber nicht veröffentlicht; klären Sie, wann und zu welchen Kosten Sie wechseln. Auf der Swissdec-Liste ist HISoft nur mit der älteren Version ELM 5.0 eingetragen.",
       "geeignet_fuer": "Kleinere und mittlere Gemeinden in der Deutschschweiz, die Finanzen, Lohn und Fachanwendungen aus einer Hand beziehen und lokal oder in einer Schweizer Cloud betreiben wollen.",
-      "quellen": "https://www.hi-ag.ch/loesungen/software/hisoft | https://www.hi-ag.ch/sites/default/files/service-2025/Produktblatt%20Finanzen.pdf | https://www.hi-ag.ch/sites/default/files/service-2025/Produktblatt%20Personal.pdf | https://www.hi-ag.ch/webinar-hisoft-im-web | https://www.hi-ag.ch/neue-partnerschaften-mit-tilbago-und-clicktime | https://www.swissmadesoftware.org/en/companies/huerlimann-informatik-ag/home.html | https://swissdec.ch/certified-erp/",
+      "quellen": "https://www.hi-ag.ch/loesungen/software/hisoft | https://www.hi-ag.ch/sites/default/files/service-2025/Produktblatt%20Finanzen.pdf | https://www.hi-ag.ch/sites/default/files/service-2025/Produktblatt%20Personal.pdf | https://www.hi-ag.ch/webinar-hisoft-im-web | https://www.hi-ag.ch/neue-partnerschaften-mit-tilbago-und-clicktime | https://www.swissmadesoftware.org/en/companies/huerlimann-informatik-ag/home.html | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 29
+      "anzahl_pruefpunkte": 28
     },
     {
       "id": "dataconsulting-urbanus",
@@ -4381,7 +4381,7 @@
       "swissdec": "Ja (zvoove ERP, ELM 5.4, 5.3 und 5.1 selbstvalidiert, 5.0)",
       "mwst_ch": "Prüfen – MWST-Abrechnung läuft über die angebundene Buchhaltung",
       "qr_rechnung": "Ja (Rechnungen mit Swiss QR-Code)",
-      "ebill": "Prüfen – E-Rechnung im ZUGFeRD-Format belegt, eBill nicht",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 2.0; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -4405,9 +4405,9 @@
       "staerken": "Durchgängige Branchensoftware für Personalverleih und -vermittlung: Rekrutierung, Verleihverträge mit GAV-Prüfung, Rapporte per App, Lohn und Fakturierung in einer Cloud-Lösung.",
       "hinweise_fallstricke": "zvoove ERP ist für Temporär- und Vermittlungsbüros gebaut, nicht für andere Firmen. Eine eigene Finanzbuchhaltung fehlt: Lohnbuchungen gehen per Export an Abacus, bexio oder Sage, oder zvoove führt die Buchhaltung als Dienstleistung. Preise gibt es nur auf Anfrage. Die Firma gehört zur deutschen zvoove Group; die Daten liegen laut Anbieter in zwei Schweizer Rechenzentren, den Betreiber sollten Sie erfragen.",
       "geeignet_fuer": "Personalverleih- und Vermittlungsfirmen in der Schweiz, die Einsätze, Rapporte, Lohn und Fakturierung digital abwickeln und die Buchhaltung separat führen.",
-      "quellen": "https://zvoove.ch | https://zvoove.ch/software | https://zvoove.ch/software/personalverleih | https://zvoove.ch/software/saas | https://zvoove.ch/software/rechnungsstellung | https://zvoove.ch/software/lizenzen | https://zvoove.ch/services/pakete | https://zvoove.ch/datenschutzerklaerung | https://www.netzwoche.ch/news/2025-04-04/zvoove-schweiz-ernennt-neuen-ceo | https://swissdec.ch/certified-erp/",
+      "quellen": "https://zvoove.ch | https://zvoove.ch/software | https://zvoove.ch/software/personalverleih | https://zvoove.ch/software/saas | https://zvoove.ch/software/rechnungsstellung | https://zvoove.ch/software/lizenzen | https://zvoove.ch/services/pakete | https://zvoove.ch/datenschutzerklaerung | https://www.netzwoche.ch/news/2025-04-04/zvoove-schweiz-ernennt-neuen-ceo | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 25
+      "anzahl_pruefpunkte": 24
     },
     {
       "id": "enovetic-easytemp",
@@ -4452,7 +4452,7 @@
       "swissdec": "Ja (E@syTemp basic: ELM 5.4, 5.3 und 5.1 selbstvalidiert, 5.0; E@syTemp UVG: KLE 1.0, SUA 1.0)",
       "mwst_ch": "Prüfen – MWST-konforme Belegablage belegt; MWST-Abrechnung als Dienstleistung",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – elektronische Fakturierung über eine Zahlungsplattform erwähnt, eBill nicht ausdrücklich",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Ja (Direktanbindung an Banken: Zahlungsvorschlag wird in easytemp unterzeichnet und übermittelt)",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -4476,9 +4476,9 @@
       "staerken": "Kombiniert Branchensoftware für den Personalverleih mit Auslagerung von Lohn, Kreditoren, Inkasso und Buchhaltung an ein spezialisiertes Backoffice.",
       "hinweise_fallstricke": "easytemp ist Software und Auslagerung in einem: Personalverleiher führen Einsätze und Verträge selbst, Lohn, Kreditoren, Inkasso und Buchhaltung übernimmt auf Wunsch das Backoffice von enovetic. Wer selbst buchen will, sollte klären, was ohne diese Dienstleistung nutzbar ist. Preise sind nicht öffentlich. Der Datenstandort ist nur als «bevorzugt Schweiz bzw. EU» umschrieben, und für Monitoring nutzt enovetic teils US-Dienste – lassen Sie sich den Speicherort vertraglich zusichern.",
       "geeignet_fuer": "Temporär- und Personalvermittlungsfirmen, die ihr Backoffice ganz oder teilweise an einen Branchenspezialisten auslagern wollen.",
-      "quellen": "https://www.enovetic.ch/easytemp/ | https://www.enovetic.ch/finanzdienstleistungen/ | https://www.enovetic.ch/lohndienstleistungen/ | https://www.enovetic.ch/ueberuns/ | https://www.enovetic.ch/datenschutz/ | https://swissdec.ch/certified-erp/",
+      "quellen": "https://www.enovetic.ch/easytemp/ | https://www.enovetic.ch/finanzdienstleistungen/ | https://www.enovetic.ch/lohndienstleistungen/ | https://www.enovetic.ch/ueberuns/ | https://www.enovetic.ch/datenschutz/ | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 29
+      "anzahl_pruefpunkte": 28
     },
     {
       "id": "mirus-mirus-4",
@@ -4736,7 +4736,7 @@
       "swissdec": "Ja (Mechanik 3000 Lohnbuchhaltung, ELM 5.1 und 5.0)",
       "mwst_ch": "Prüfen – MWST-Abrechnung nicht beschrieben; Import von Veranlagungsverfügungen (eVV) belegt",
       "qr_rechnung": "Prüfen – nicht belegt",
-      "ebill": "Prüfen – eBill-Modul für Lieferantenrechnungen belegt, Versand an Kunden nicht",
+      "ebill": "Teilweise (elektronischer Rechnungsversand über PostFinance laut deren Softwarepartnerliste ab Version 5.8, auch Empfang; eBill an Privatkunden nicht ausdrücklich belegt)",
       "bank_iso20022": "Prüfen – nicht belegt",
       "bankanbindung": "Prüfen – nicht belegt",
       "gebuev_archiv": "Prüfen – nicht belegt",
@@ -4760,9 +4760,9 @@
       "staerken": "Branchen-ERP für die Metallbearbeitung mit Fertigungsplanung, NC-Programmverwaltung, BDE, Qualitätsmanagement, Zollschnittstellen sowie Buchhaltung und Swissdec-zertifiziertem Lohn aus einer Hand.",
       "hinweise_fallstricke": "Nische Metallbearbeitung und Mechanik (Lohnfertiger, Werkstätten); für Metallbau mit Montage und Baustellen nicht belegt. Kleiner Anbieter: Stellvertretung, Weiterentwicklung und Datenexport bei einem Wechsel vertraglich klären. Betriebsmodell, Preise und Schweizer Zahlungsverkehr (QR, ISO 20022) sind nicht veröffentlicht.",
       "geeignet_fuer": "Kleine und mittlere mechanische Werkstätten und Metallbearbeiter, die Auftrag, Fertigung, BDE, Buchhaltung und Lohn in einem System führen wollen.",
-      "quellen": "https://www.integral-concept.ch | https://www.integral-concept.ch/Produkte/Uebersicht.aspx | https://www.integral-concept.ch/Produkte/Buchhaltung.aspx | https://www.integral-concept.ch/Produkte/Administration.aspx | https://www.integral-concept.ch/Produkte/Produktion.aspx | https://www.integral-concept.ch/Produkte/Personal.aspx | https://www.integral-concept.ch/Produkte/Tools.aspx | https://pdf-tools.com/de/kundenstories/creation-printing-pdf-documents-erp-system | https://swissdec.ch/certified-erp/",
+      "quellen": "https://www.integral-concept.ch | https://www.integral-concept.ch/Produkte/Uebersicht.aspx | https://www.integral-concept.ch/Produkte/Buchhaltung.aspx | https://www.integral-concept.ch/Produkte/Administration.aspx | https://www.integral-concept.ch/Produkte/Produktion.aspx | https://www.integral-concept.ch/Produkte/Personal.aspx | https://www.integral-concept.ch/Produkte/Tools.aspx | https://pdf-tools.com/de/kundenstories/creation-printing-pdf-documents-erp-system | https://swissdec.ch/certified-erp/ | https://www.postfinance.ch/de/support/partner/e-rechnung.html",
       "stand": "2026-11-13",
-      "anzahl_pruefpunkte": 37
+      "anzahl_pruefpunkte": 36
     }
   ]
 }
