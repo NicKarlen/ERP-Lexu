@@ -128,7 +128,8 @@ function fit(l, groesse, branche, G) {
     else if (l.g.some((g) => Math.abs(G.indexOf(g) - G.indexOf(groesse)) === 1)) p += 0.5;
     else return null;
   } else p += 1;
-  if (branche && branche !== "andere" && l.b.includes(branche)) p += l.seg === "Branchenlösung" ? 2.5 : 1.5;
+  // Branchenlösungen nennen ihre Zielgrösse selten: offene Grösse nicht bestrafen (+0.5)
+  if (branche && branche !== "andere" && l.b.includes(branche)) p += l.seg === "Branchenlösung" ? 2.5 + (groesse && !l.g.length ? 0.5 : 0) : 1.5;
   else if (l.seg === "Branchenlösung") return null;
   else if (l.b.includes("neutral") || !l.b.length) p += 1;
   else p += 0.5;

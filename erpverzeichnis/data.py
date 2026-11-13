@@ -465,7 +465,8 @@ class Loesung:
         else:
             punkte += 1  # keine Grösse gewählt oder Zielgrösse noch offen
         if branche and branche != "andere" and branche in self.branchen:
-            punkte += 2.5 if self.segment == "Branchenlösung" else 1.5
+            # Branchenlösungen nennen ihre Zielgrösse selten: offene Grösse nicht bestrafen (+0.5)
+            punkte += (2.5 + (0.5 if groesse and not self.groessen else 0)) if self.segment == "Branchenlösung" else 1.5
         elif self.segment == "Branchenlösung":
             return None  # Branchenlösung einer anderen Branche
         elif "neutral" in self.branchen or not self.branchen:
