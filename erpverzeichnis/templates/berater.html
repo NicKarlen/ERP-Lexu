@@ -22,7 +22,10 @@
     </dl>
     <div class="ft-r">
       {{ abdruck(l) }}
-      <a class="btn btn-g" href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer>Steckbrief {{ icon("arrow", 15) }}</a>
+      <span class="ft-knoepfe">
+        <button type="button" class="merk" data-merken="{{ l.id }}" data-name="{{ l.name }}" aria-pressed="false"><span class="merk-plus">{{ icon("plus", 14) }}</span><span class="merk-ok">{{ icon("check", 14) }}</span><span class="merk-t">Vergleichen</span></button>
+        <a class="btn btn-g" href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer>Steckbrief {{ icon("arrow", 15) }}</a>
+      </span>
     </div>
   </div>
 </article>

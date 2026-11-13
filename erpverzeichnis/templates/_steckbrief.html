@@ -117,7 +117,7 @@
       <p class="muted klein acc-fuss">Geprüft am {{ l.raw.stand|datum }} · {{ l.pruefpunkte }} offene{% if l.pruefpunkte == 1 %}r{% endif %} Prüfpunkt{% if l.pruefpunkte != 1 %}e{% endif %}. Angaben mit «noch offen» sind öffentlich nicht belegt und sollten vor einem Entscheid beim Anbieter bestätigt werden.</p>
     </details>
     <div class="det-aktionen">
-      <a class="btn btn-g" href="{{ url('vergleich/') }}?ids={{ l.id }}">{{ icon("compare", 16) }} Mit anderen vergleichen</a>
+      <a class="btn btn-g merk merk-gross" href="{{ url('vergleich/') }}?ids={{ l.id }}" data-merken="{{ l.id }}" data-name="{{ l.name }}" aria-pressed="false"><span class="merk-plus">{{ icon("plus", 15) }}</span><span class="merk-ok">{{ icon("check", 15) }}</span><span class="merk-t">Zum Vergleich hinzufügen</span></a>
       {% if repo_url %}<a class="btn btn-t" href="{{ repo_url }}/issues/new?template=fehler-melden.yml&amp;loesung={{ l.id|urlencode }}&amp;title={{ ('Fehler: ' ~ l.name)|urlencode }}" target="_blank" rel="noopener">Fehler melden</a>{% endif %}
     </div>
     <p class="muted klein det-melden">Angabe falsch oder veraltet? Melden Sie es{% if not repo_url %} über die Seite <a href="{{ url('ueber/') }}#fehler">Über das Projekt</a>{% endif %} – auch Anbieter sind willkommen.</p>

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initBerater();
   initVerzeichnis();
   initVergleich();
+  initMerkliste();
   initSuche();
   initZurueck();
 });
@@ -90,6 +91,7 @@ function initSchublade() {
       body.replaceChildren(...tmp.childNodes);
       body.scrollTop = 0;
       initDetails(body);
+      vglKnoepfe(body);
       drawer.querySelector("[data-close]").focus();
     } catch (_) {
       location.href = seite.href; // Fallback: normale Seite
@@ -216,6 +218,7 @@ function initBerater() {
       el.querySelector("[data-gruende]").innerHTML = listeHtml(gruende(t, D));
       return el;
     }));
+    vglKnoepfe(recs);
     leer.hidden = rollen.length > 0;
     mehr.hidden = rollen.length < 2;
     vglLink.href = `${ROOT}vergleich/?ids=${rollen.map(([, t]) => t.l.id).join(",")}`;
@@ -286,7 +289,7 @@ function initVerzeichnis() {
   const anwenden = (urlSetzen) => {
     const s = lesen();
     let n = 0;
-    for (const z of zeilen) { const ok = passt(z, s); z.el.hidden = !ok; if (ok) n++; }
+    for (const z of zeilen) { const ok = passt(z, s); z.el.parentElement.hidden = !ok; if (ok) n++; }
     document.querySelector("[data-anzahl]").textContent = `${n} ${n === 1 ? "Lösung" : "Lösungen"}`;
     document.querySelector("[data-anzahl-info]").textContent = n === total ? "– alle Einträge" : `von ${total}`;
     document.querySelector("[data-leer]").hidden = n > 0;
@@ -305,9 +308,6 @@ function initVerzeichnis() {
       em.textContent = k;
       em.closest("label").classList.toggle("leer", k === 0);
     });
-    const sichtbar = zeilen.filter((z) => !z.el.hidden).slice(0, 4).map((z) => z.id);
-    const vgl = document.querySelector("[data-vergleich-alle]");
-    if (vgl) vgl.href = `${ROOT}vergleich/?ids=${sichtbar.join(",")}`;
     if (urlSetzen) {
       const q = new URLSearchParams();
       if (s.q) q.set("q", s.q);
@@ -342,27 +342,137 @@ function initVerzeichnis() {
   anwenden(false);
 }
 
-/* ---------- Vergleich: Auswahl in der Adresse (?ids=a,b,c) ---------- */
+/* ---------- Merkliste für den Vergleich (seitenübergreifend, nur in diesem Browser) ----------
+   Gespeichert als [{id, name}] in localStorage – reine Bequemlichkeit, die Seite funktioniert auch ohne. */
+const VGL_KEY = "erp-vergleich", VGL_MAX = 4;
+const vglLesen = () => {
+  try { const x = JSON.parse(localStorage.getItem(VGL_KEY)); return Array.isArray(x) ? x.slice(0, VGL_MAX) : []; } catch (_) { return []; }
+};
+const vglSchreiben = (liste) => {
+  try { localStorage.setItem(VGL_KEY, JSON.stringify(liste.slice(0, VGL_MAX))); } catch (_) { /* privat/blockiert */ }
+  document.dispatchEvent(new CustomEvent("vgl-geaendert"));
+};
+
+function vglKnoepfe(root = document) {
+  const ids = vglLesen().map((x) => x.id);
+  $$("[data-merken]", root).forEach((b) => {
+    const an = ids.includes(b.dataset.merken);
+    b.classList.toggle("an", an);
+    b.setAttribute("aria-pressed", String(an));
+    const t = b.querySelector(".merk-t");
+    if (t) t.textContent = an ? "Im Vergleich" : (b.classList.contains("merk-gross") ? "Zum Vergleich hinzufügen" : "Vergleichen");
+  });
+}
+
+function initMerkliste() {
+  const leiste = document.getElementById("vgl-leiste");
+  let hinweisTimer;
+  const zeigeLeiste = (hinweis = "") => {
+    if (!leiste) return;
+    const liste = vglLesen();
+    leiste.hidden = liste.length === 0;
+    document.body.classList.toggle("mit-vgl-leiste", liste.length > 0);
+    leiste.querySelector("[data-vgl-n]").textContent = liste.length;
+    leiste.querySelector("[data-vgl-chips]").innerHTML = liste.map((x) =>
+      `<span class="vgl-chip">${esc(x.name)}<button type="button" data-vgl-weg="${esc(x.id)}" aria-label="${esc(x.name)} entfernen">×</button></span>`).join("");
+    const los = leiste.querySelector("[data-vgl-los]");
+    los.href = `${leiste.dataset.ziel}?ids=${liste.map((x) => x.id).join(",")}`;
+    los.classList.toggle("aus", liste.length < 2);
+    los.title = liste.length < 2 ? "Wählen Sie mindestens zwei Lösungen" : "";
+    const h = leiste.querySelector("[data-vgl-hinweis]");
+    h.textContent = hinweis || (liste.length === 1 ? "Noch mindestens eine weitere wählen" : "");
+    clearTimeout(hinweisTimer);
+    if (hinweis) hinweisTimer = setTimeout(() => zeigeLeiste(), 3500);
+  };
+  const aktualisieren = (hinweis) => { vglKnoepfe(); zeigeLeiste(hinweis); };
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-merken]");
+    if (b) {
+      e.preventDefault();
+      e.stopPropagation();
+      const liste = vglLesen();
+      const id = b.dataset.merken;
+      if (liste.some((x) => x.id === id)) vglSchreiben(liste.filter((x) => x.id !== id));
+      else if (liste.length >= VGL_MAX) { aktualisieren(`Höchstens ${VGL_MAX} – entfernen Sie zuerst eine Lösung`); return; }
+      else vglSchreiben([...liste, { id, name: b.dataset.name || id }]);
+      return;
+    }
+    const weg = e.target.closest("[data-vgl-weg]");
+    if (weg) vglSchreiben(vglLesen().filter((x) => x.id !== weg.dataset.vglWeg));
+    if (e.target.closest("[data-vgl-leeren]")) vglSchreiben([]);
+    const los = e.target.closest("[data-vgl-los]");
+    if (los && los.classList.contains("aus")) e.preventDefault();
+  }, true);
+  document.addEventListener("vgl-geaendert", () => aktualisieren());
+  window.addEventListener("storage", (e) => { if (e.key === VGL_KEY) aktualisieren(); });
+  aktualisieren();
+}
+
+/* ---------- Vergleich: vier Plätze + Suche; Auswahl in der Adresse (?ids=a,b,c) ---------- */
 function initVergleich() {
   const form = document.querySelector("[data-vergleich-form]");
   if (!form) return;
-  const MAX = 4;
+  const MAX = VGL_MAX;
   const boxen = $$('input[name="ids"]', form);
+  const box = (id) => boxen.find((b) => b.value === id);
   const nurDiff = form.querySelector("[data-nur-unterschiede]");
   const info = form.querySelector("[data-vg-info]");
   const tabelle = document.querySelector("[data-vg-tabelle]");
   const leer = document.querySelector("[data-vg-leer]");
-  const start = liste(new URLSearchParams(location.search), "ids").filter((id) => boxen.some((b) => b.value === id)).slice(0, MAX);
-  boxen.forEach((b) => (b.checked = start.includes(b.value)));
-  let reihenfolge = start;
+  const picker = form.querySelector("[data-vg-picker]");
+  const slots = form.querySelector("[data-vg-slots]");
+  const q = form.querySelector("[data-vg-q]");
+  const treffer = form.querySelector("[data-vg-treffer]");
+  picker.hidden = false;
+  form.querySelector(".vg-liste").hidden = true;
+
+  // Start: Adresse, sonst die Merkliste aus Verzeichnis/Steckbrief
+  let ids = liste(new URLSearchParams(location.search), "ids");
+  if (!ids.length) ids = vglLesen().map((x) => x.id);
+  ids = ids.filter((id) => box(id)).slice(0, MAX);
+
+  const daten = (id) => box(id).dataset;
+  const speichern = () => vglSchreiben(ids.map((id) => ({ id, name: daten(id).name })));
+
+  const plaetze = () => {
+    let html = ids.map((id) => {
+      const d = daten(id);
+      return `<div class="vg-slot voll"><span class="seg seg-${esc(d.segid)}">${esc(d.seg)}</span><b>${esc(d.name)}</b><small>${esc(d.an)}</small>` +
+        `<button type="button" class="vg-weg" data-slot-weg="${esc(id)}" aria-label="${esc(d.name)} entfernen">×</button></div>`;
+    }).join("");
+    for (let i = ids.length; i < MAX; i++) {
+      html += `<button type="button" class="vg-slot frei" data-slot-neu><span class="vg-plus">+</span>${i === ids.length ? "Lösung hinzufügen" : "Platz frei"}</button>`;
+    }
+    slots.innerHTML = html;
+  };
+
+  const trefferZeigen = () => {
+    const w = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (ids.length >= MAX) {
+      treffer.innerHTML = `<p class="vg-treffer-leer">Alle ${MAX} Plätze sind belegt – entfernen Sie zuerst eine Lösung.</p>`;
+      treffer.hidden = false;
+      return;
+    }
+    const passend = boxen.filter((b) => !ids.includes(b.value)).filter((b) => {
+      const t = `${b.dataset.name} ${b.dataset.an} ${b.dataset.seg}`.toLowerCase();
+      return w.every((x) => t.includes(x));
+    });
+    const gruppen = {};
+    passend.forEach((b) => (gruppen[b.dataset.seg] ||= []).push(b));
+    treffer.innerHTML = Object.entries(gruppen).map(([seg, bs]) =>
+      `<div class="vg-gruppe"><p>${esc(seg)}</p>${bs.map((b) =>
+        `<button type="button" data-hinzu="${esc(b.value)}"><b>${esc(b.dataset.name)}</b><small>${esc(b.dataset.an)} · ${esc(b.dataset.g)}</small></button>`).join("")}</div>`).join("")
+      || `<p class="vg-treffer-leer">Keine weitere Lösung gefunden.</p>`;
+    treffer.hidden = false;
+  };
 
   const zeigen = (urlSetzen) => {
-    const ids = reihenfolge.filter((id) => boxen.find((b) => b.value === id)?.checked);
-    boxen.forEach((b) => { b.disabled = !b.checked && ids.length >= MAX; b.closest("label").classList.toggle("aus", b.disabled); });
-    info.textContent = ids.length >= MAX ? `Höchstens ${MAX} Lösungen gleichzeitig.` : ids.length === 1 ? "Wählen Sie mindestens eine weitere Lösung." : "";
+    boxen.forEach((b) => (b.checked = ids.includes(b.value)));
+    plaetze();
+    info.textContent = ids.length === 1 ? "Wählen Sie mindestens eine weitere Lösung." : "";
     leer.hidden = ids.length > 0;
     tabelle.hidden = ids.length === 0;
-    // Spalten in gewählter Reihenfolge zeigen
     $$("tr", tabelle).forEach((tr) => {
       const zellen = $$("[data-col]", tr);
       zellen.forEach((z) => (z.hidden = !ids.includes(z.dataset.col)));
@@ -377,25 +487,37 @@ function initVergleich() {
     });
     if (urlSetzen) {
       history.replaceState(null, "", location.pathname + (ids.length ? `?ids=${ids.join(",")}` : ""));
+      speichern();
     }
   };
-  form.addEventListener("change", (e) => {
-    if (e.target.name === "ids") {
-      reihenfolge = e.target.checked ? [...reihenfolge.filter((x) => x !== e.target.value), e.target.value]
-        : reihenfolge.filter((x) => x !== e.target.value);
+
+  const entfernen = (id) => { ids = ids.filter((x) => x !== id); zeigen(true); };
+  form.addEventListener("click", (e) => {
+    const weg = e.target.closest("[data-slot-weg]");
+    if (weg) return entfernen(weg.dataset.slotWeg);
+    if (e.target.closest("[data-slot-neu]")) { q.focus(); trefferZeigen(); return; }
+    const hinzu = e.target.closest("[data-hinzu]");
+    if (hinzu && ids.length < MAX) {
+      ids = [...ids, hinzu.dataset.hinzu];
+      q.value = "";
+      zeigen(true);
+      if (ids.length < MAX) { trefferZeigen(); q.focus(); } else treffer.hidden = true;
     }
-    zeigen(true);
   });
-  form.addEventListener("submit", (e) => { e.preventDefault(); zeigen(true); });
+  q.addEventListener("input", trefferZeigen);
+  q.addEventListener("focus", trefferZeigen);
+  q.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { treffer.hidden = true; q.blur(); }
+    if (e.key === "Enter") { e.preventDefault(); const erst = treffer.querySelector("[data-hinzu]"); if (erst) erst.click(); }
+  });
+  document.addEventListener("click", (e) => { if (!picker.contains(e.target)) treffer.hidden = true; });
+  nurDiff.addEventListener("change", () => zeigen(false));
+  form.addEventListener("submit", (e) => e.preventDefault());
   tabelle.addEventListener("click", (e) => {
     const b = e.target.closest("[data-entfernen]");
-    if (!b) return;
-    const box = boxen.find((x) => x.value === b.dataset.entfernen);
-    box.checked = false;
-    reihenfolge = reihenfolge.filter((x) => x !== box.value);
-    zeigen(true);
+    if (b) entfernen(b.dataset.entfernen);
   });
-  zeigen(false);
+  zeigen(ids.length > 0);
 }
 
 /* ---------- Suchvorschläge im Berater ---------- */

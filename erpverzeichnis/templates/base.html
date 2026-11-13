@@ -62,6 +62,19 @@
   </footer>
   {% endblock %}
 
+  {% if seite != "vergleich" %}
+  <div class="vgl-leiste" id="vgl-leiste" data-ziel="{{ url('vergleich/') }}" hidden>
+    <div class="vgl-in">
+      <span class="vgl-titel">{{ icon("compare", 17) }} <b data-vgl-n>0</b> von 4 zum Vergleich</span>
+      <span class="vgl-chips" data-vgl-chips></span>
+      <span class="vgl-hinweis" data-vgl-hinweis></span>
+      <span class="vgl-aktion">
+        <button type="button" class="btn btn-t btn-klein" data-vgl-leeren>Leeren</button>
+        <a class="btn btn-p btn-klein" data-vgl-los href="{{ url('vergleich/') }}">Vergleichen {{ icon("arrow", 15) }}</a>
+      </span>
+    </div>
+  </div>
+  {% endif %}
   <div class="scrim" id="scrim" hidden></div>
   <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Steckbrief">
     <div class="dr-hd">

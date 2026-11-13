@@ -82,7 +82,6 @@
         <h2><span data-anzahl>{{ loesungen|length }} Lösungen</span><span data-anzahl-info>– alle Einträge</span></h2>
         <div class="vz-res-r">
           <a class="btn btn-t" href="./" data-reset hidden>{{ icon("x", 15) }} Filter zurücksetzen</a>
-          <a class="btn btn-g" href="{{ url('vergleich/') }}" data-vergleich-alle>{{ icon("compare", 15) }} Vergleichen</a>
         </div>
       </div>
 
@@ -96,6 +95,8 @@
           <span role="columnheader">Darauf achten</span>
         </div>
         {% for l in loesungen %}
+        <div class="vz-item">
+        <button type="button" class="merk" data-merken="{{ l.id }}" data-name="{{ l.name }}" aria-pressed="false"><span class="merk-plus">{{ icon("plus", 14) }}</span><span class="merk-ok">{{ icon("check", 14) }}</span><span class="merk-t">Vergleichen</span></button>
         <a class="vz-row" role="row" href="{{ url('erp/' ~ l.id ~ '/') }}" data-drawer data-id="{{ l.id }}"
            data-g="{{ l.groessen|join(' ') }}" data-seg="{{ l.seg.id }}" data-bt="{{ l.betrieb|join(' ') }}"
            data-m="{% for k, v in l.bedarf_werte.items() %}{{ k }}:{{ v }} {% endfor %}"
@@ -111,6 +112,7 @@
           <span class="c-kosten" role="cell">{{ kosten(l) }}<span class="muted klein">{{ l.raw.preis_einstieg }}</span></span>
           <span class="c-hinweis" role="cell">{{ l.raw.hinweise_fallstricke or "–" }}</span>
         </a>
+        </div>
         {% endfor %}
       </div>
       <div class="vz-leer" data-leer hidden>

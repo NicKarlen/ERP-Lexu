@@ -17,10 +17,20 @@
   </section>
 
   <form class="vg-wahl" method="get" action="./" data-vergleich-form>
-    <fieldset>
+    {# Mit JavaScript: vier Plätze und eine Suche. Ohne JavaScript: die Liste zum Ankreuzen darunter. #}
+    <div class="vg-picker" data-vg-picker hidden>
+      <div class="vg-slots" data-vg-slots></div>
+      <div class="vg-suche">
+        <label class="vz-suche">{{ icon("search", 16) }}<span class="sr">Lösung hinzufügen</span>
+          <input type="search" data-vg-q placeholder="Lösung hinzufügen – Name, Anbieter oder Art …" autocomplete="off">
+        </label>
+        <div class="vg-treffer" data-vg-treffer hidden></div>
+      </div>
+    </div>
+    <fieldset class="vg-liste">
       <legend class="sr">Lösungen auswählen</legend>
       {% for l in loesungen %}
-      <label class="chipwahl klein"><input type="checkbox" name="ids" value="{{ l.id }}"><span><b>{{ l.name }}</b><small>{{ l.seg.label }}</small></span></label>
+      <label class="chipwahl klein"><input type="checkbox" name="ids" value="{{ l.id }}" data-name="{{ l.name }}" data-an="{{ l.anbieter }}" data-seg="{{ l.seg.label }}" data-segid="{{ l.seg.id }}" data-g="{{ l.groessen_text }}"><span><b>{{ l.name }}</b><small>{{ l.seg.label }}</small></span></label>
       {% endfor %}
     </fieldset>
     <div class="vg-optionen">
